@@ -1,0 +1,62 @@
+﻿using RoR2;
+using SS2;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+
+[assembly: HG.Reflection.SearchableAttribute.OptIn]
+namespace LordsStarstormEdits.SS2Edits.Items
+{
+    internal static class ShardIcons
+    {
+        [SystemInitializer(dependencies: typeof(ItemCatalog))]
+        internal static void ChangeIcons()
+        {
+            if (!SS2Config.enableBeta.value)
+            {
+                return;
+            }
+
+
+            Sprite shardScavIcon = MyAssets.ShardIcons.AssetBundle.LoadAsset<Sprite>("texIconShardScav");
+            Sprite shardGoldIcon = MyAssets.ShardIcons.AssetBundle.LoadAsset<Sprite>("texIconShardGold");
+            Sprite shardVoidIcon = MyAssets.ShardIcons.AssetBundle.LoadAsset<Sprite>("texIconShardVoid");
+            Sprite shardIceIcon = MyAssets.ShardIcons.AssetBundle.LoadAsset<Sprite>("texIconShardIce");
+            Sprite shardFireIcon = MyAssets.ShardIcons.AssetBundle.LoadAsset<Sprite>("texIconShardFire");
+            Sprite shardStormIcon = MyAssets.ShardIcons.AssetBundle.LoadAsset<Sprite>("texIconShardStorm");
+            Sprite shardEarthIcon = MyAssets.ShardIcons.AssetBundle.LoadAsset<Sprite>("texIconShardEarth");
+            Sprite shardLightningIcon = MyAssets.ShardIcons.AssetBundle.LoadAsset<Sprite>("texIconShardLightning");
+
+
+            SS2Content.Items.ShardScav.pickupIconSprite = shardScavIcon;
+            // need to do it again this way because otherwise it shows the old icon in picker menus like the trade tele
+            PickupCatalog.FindPickupIndex(SS2Content.Items.ShardScav.itemIndex).pickupDef.iconSprite = shardScavIcon;
+
+            SS2Content.Items.ShardGold.pickupIconSprite = shardGoldIcon;
+            PickupCatalog.FindPickupIndex(SS2Content.Items.ShardGold.itemIndex).pickupDef.iconSprite = shardGoldIcon;
+
+            SS2Content.Items.ShardVoid.pickupIconSprite = shardVoidIcon;
+            PickupCatalog.FindPickupIndex(SS2Content.Items.ShardVoid.itemIndex).pickupDef.iconSprite = shardVoidIcon;
+
+            SS2Content.Items.ShardFire.pickupIconSprite = shardFireIcon;
+            PickupCatalog.FindPickupIndex(SS2Content.Items.ShardFire.itemIndex).pickupDef.iconSprite = shardFireIcon;
+
+            SS2Content.Items.ShardEarth.pickupIconSprite = shardEarthIcon;
+            PickupCatalog.FindPickupIndex(SS2Content.Items.ShardEarth.itemIndex).pickupDef.iconSprite = shardEarthIcon;
+
+            SS2Content.Items.ShardLightning.pickupIconSprite = shardLightningIcon;
+            PickupCatalog.FindPickupIndex(SS2Content.Items.ShardLightning.itemIndex).pickupDef.iconSprite = shardLightningIcon;
+
+            SS2Content.Items.ShardIce.pickupIconSprite = shardIceIcon;
+            PickupCatalog.FindPickupIndex(SS2Content.Items.ShardIce.itemIndex).pickupDef.iconSprite = shardIceIcon;
+
+            // storm shards got fully disabled? they're a beta thing but they dont' show up when beta is enabled
+            if (SS2Content.Items.ShardStorm != null)
+            {
+                SS2Content.Items.ShardStorm.pickupIconSprite = shardStormIcon;
+                PickupCatalog.FindPickupIndex(SS2Content.Items.ShardStorm.itemIndex).pickupDef.iconSprite = shardStormIcon;
+            }
+        }
+    }
+}

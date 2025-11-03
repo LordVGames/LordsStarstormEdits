@@ -1,0 +1,109 @@
+{
+  "strings": {
+    "LSE_STORM_LEVEL_1": "A storm is approaching...",
+    "LSE_STORM_LEVEL_2": "The storm grows stronger...",
+    "LSE_STORM_LEVEL_3": "Lightning begins to strike...",
+    "LSE_STORM_LEVEL_4": "The storm rages on...",
+    "LSE_STORM_LEVEL_OTHER": "The storm is at level {0}.",
+    "LSE_STORM_END": "The storm fades away...",
+
+    "LSE_SUPER_ELITE_SPAWN": "The energy in the air suddenly increases...",
+
+    "SS2_PORTAL_VOIDSHOP_NAME": "Mysterious Portal",
+    "SS2_TRADER_INTERACTION_HEADER": "Gate traveler... Offer?",
+    "TRADETELEPORTER_CONTEXT": "Trade Across Time",
+    "SS2_TPTRADE_PICKUP_HEADER": "The trade requires great energy and value...",
+
+    "SS2_INTERACTABLE_LUNARGAMBLER_NAME": "Lunar Gambler",
+    "SS2_INTERACTABLE_LUNARGAMBLER_CONTEXT": "Roll your fate?",
+    "SS2_INTERACTABLE_LUNARGAMBLER_CONTEXT_CASHOUT": "Remove the curse(s) for rewards?",
+
+    "SS2_ETHEREAL_WARNING2": "Are you prepared for what is to come?",
+    "SS2_SHRINE_ETHEREAL_WARN_MESSAGE": "{0} considers increasing the difficulty..",
+    "SS2_SHRINE_ETHEREAL_WARN_MESSAGE_2P": "This will increase the difficulty! Are you sure?",
+
+    "LSE_ULTRA_SUBTITLE_SS1": "Overruling Denouement",
+
+
+
+    "SS2_EQUIP_AFFIXSUPERFIRE_NAME": "Royal Flame",
+    "SS2_EQUIP_AFFIXSUPERFIRE_SUBTITLE": "Harbinger of Fire",
+
+    "SS2_EQUIP_AFFIXSUPERICE_NAME": "Her Cosmic Brilliance",
+    "SS2_EQUIP_AFFIXSUPERICE_SUBTITLE": "Harbinger of Ice",
+
+    "SS2_EQUIP_AFFIXSUPERLIGHTNING_NAME": "Invigorating Voltage",
+    "SS2_EQUIP_AFFIXSUPERLIGHTNING_SUBTITLE": "Harbinger of Lightning",
+
+    "SS2_EQUIP_AFFIXSUPEREARTH_NAME": "His Radiant Passion",
+    "SS2_EQUIP_AFFIXSUPEREARTH_SUBTITLE": "Harbinger of Petrichor V's Energy",
+
+
+
+    "SS2_KNIGHT_DESCRIPTION": "The Knight is a skilled expert in melee combat, dueling and parrying foes with precise timing and execution.\n\n<color=#CCD3E0>< ! > FULLY WORKS ONLY WHEN PLAYED BY THE HOST\n< ! > parry.",
+
+    "SS2_KNIGHT_PASSIVE_DESC": "A buff ward surronds you that grants allies in its radius <style=cIsDamage>20% attack speed</style> and <style=cIsDamage>20% damage</style>.",
+
+    "SS2_KEYWORD_PARRY": "<style=cKeywordName>Parry</style><style=cSub>Block an incoming hit to <style=cIsUtility>stun</style> and deal <style=cIsDamage>350% damage</style> to all enemies around you. You also become <style=cIsUtility>immune to damage</style> for 1 second.</style>",
+    "SS2_KEYWORD_EMPOWERING": "<style=cKeywordName>Empowering</style><style=cSub><color=#fa78f3>Improves</color> your next skill use.</style>",
+
+    "SS2_KNIGHT_PRIMARY_SWORD_DESC": "Slice forward for <style=cIsDamage>200% damage</style>. Every third hit stabs forward for <style=cIsDamage>400% damage</style>. While blocking, bash enemies for <style=cIsDamage>240% damage</style>.",
+    "SS2_KNGIHT_PRIMARY_SWORD_UPRGADE_TOOLTIP": "<style=cKeywordName><color=#fa78f3>Empowered</color></style><style=cSub>Dash forward, and strike for <style=cIsDamage>3x400% damage</style>.</style>",
+
+    "SS2_KNIGHT_SECONDARY_SHIELD_DESC": "Raise your shield, gaining <style=cIsUtility>400 armor</style>. Use before an incoming strike to <style=cIsDamage>parry</style> it and <color=#fa78f3>Empower</color> your next skill.",
+    "SS2_KNIGHT_SECONDARY_SHIELD_DESC2": "Raise your shield, gaining <style=cIsUtility>400 armor</style> and replacing your jump with a <style=cIsUtility>roll</style>. Use before an incoming strike to <style=cIsDamage>parry</style> it and <color=#fa78f3>Empower</color> your next skill.",
+
+    "SS2_KNIGHT_SHIELD_BASH_DESC": "Shield Bash in front of you for <style=cIsDamage>240% damage</style> and <style=cIsUtility>stun</style> enemies hit.",
+
+    "SS2_KNIGHT_UTILITY_LEAP_DESC": "Dash foward, spinning and slicing repeatedly for <style=cIsDamage>120% damage</style> per hit. The number of hits scales with attack speed.",
+    "SS2_KNIGHT_UTILITY_LEAP_UPGRADE_TOOLTIP": "<style=cKeywordName><color=#fa78f3>Empowered</color></style><style=cSub>Travel further, dealing <style=cIsDamage>200% damage</style> per hit.</style>",
+
+    "SS2_KNIGHT_SPECIAL_BANNER_DESC": "Thrust a banner into the ground for <style=cIsDamage>300% damage</style>. It grants <style=cIsHealing>7.5% health regeneration</style>, <style=cIsUtility>2.7% movement speed</style>, <style=cIsUtility>30% jump height</style>, and <style=cIsDamage>41.6% damage</style> to nearby allies while <style=cIsUtility>slowing</style> nearby enemies' movement speed by <style=cIsUtility>44.5%</style>.",
+    "SS2_KNIGHT_SPECIAL_BANNER_UPGRADE_TOOLTIP": "<style=cKeywordName><color=#fa78f3>Empowered</color></style><style=cSub>CURRENTLY DOES NOT WORK. Additionally grants <style=cIsUtility>40% barrier</style>.</style>",
+
+    "SS2_CYBORG2_DESCRIPTION": "The Cyborg is a \n\n<color=#CCD3E0>< ! > FULLY WORKS ONLY WHEN PLAYED BY THE HOST",
+
+
+
+
+    "SS2_ITEM_SHARDEARTH_NAME": "Shards of The Planet",
+    "SS2_ITEM_SHARDEARTH_PICKUP": "A collection of shards made of Petrichor V's inner core. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDEARTH_DESC": "A collection of shards made of Petrichor V's inner core. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDEARTH_LORE": "???",
+
+    "SS2_ITEM_SHARDFIRE_NAME": "Shards of Fire",
+    "SS2_ITEM_SHARDFIRE_PICKUP": "A collection of shards containing pure flames inside. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDFIRE_DESC": "A collection of shards containing pure flames inside. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDFIRE_LORE": "???",
+
+    "SS2_ITEM_SHARDGOLD_NAME": "Shards of Gold",
+    "SS2_ITEM_SHARDGOLD_PICKUP": "A collection of shards made of halcyon gold. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDGOLD_DESC": "A collection of shards made of halcyon gold. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDGOLD_LORE": "???",
+
+    "SS2_ITEM_SHARDICE_NAME": "Shards of Ice",
+    "SS2_ITEM_SHARDICE_PICKUP": "A collection of shards that freeze the air around them. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDICE_DESC": "A collection of shards that freeze the air around them. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDICE_LORE": "???",
+
+    "SS2_ITEM_SHARDLIGHTNING_NAME": "Shards of Lightning",
+    "SS2_ITEM_SHARDLIGHTNING_PICKUP": "A collection of shards containing an invigorating electric current. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDLIGHTNING_DESC": "A collection of shards containing an invigorating electric current. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDLIGHTNING_LORE": "???",
+
+    "SS2_ITEM_SHARDSCAV_NAME": "Shards of The Scavenger",
+    "SS2_ITEM_SHARDSCAV_PICKUP": "A gift from a friend. Does nothing, but <style=cIsDamage>yields great rewards</style> <style=cIsUtility>when used as a currency</style>.",
+    "SS2_ITEM_SHARDSCAV_DESC": "A gift from a friend. Does nothing, but <style=cIsDamage>yields great rewards</style> <style=cIsUtility>when used as a currency</style>.",
+    "SS2_ITEM_SHARDSCAV_LORE": "???",
+
+    "SS2_ITEM_SHARDSTORM_NAME": "Shards of The Storm",
+    "SS2_ITEM_SHARDSTORM_PICKUP": "A collection of shards filled with the energy of intense weather. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDSTORM_DESC": "A collection of shards filled with the energy of intense weather. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDSTORM_LORE": "???",
+
+    "SS2_ITEM_SHARDVOID_NAME": "Shards of The Void",
+    "SS2_ITEM_SHARDVOID_PICKUP": "A collection of shards made of residual void energy. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDVOID_DESC": "A collection of shards made of residual void energy. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
+    "SS2_ITEM_SHARDVOID_LORE": "???"
+  }
+}

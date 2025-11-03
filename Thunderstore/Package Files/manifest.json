@@ -1,0 +1,11 @@
+{
+	"name": "LordsStarstormEdits",
+	"version_number": "1.0.0",
+	"website_url": "https://github.com/LordVGames/LordsStarstormEdits",
+	"description": "A collection of my edits for the Starstorm 2 mod to change or rebalance some features, especially beta features.",
+	"dependencies": [
+		"bbepis-BepInExPack-5.4.2117",
+		"MonoDetour-MonoDetour_BepInEx_5-0.7.5",
+		"TeamMoonstorm-Starstorm2-0.6.25"
+	]
+}

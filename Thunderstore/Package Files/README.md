@@ -50,3 +50,4 @@ Just about all edits here can be toggled on/off. Many of the edits that fill in 
 - Knight has his (currently unused) passive buff ward
 - Removed the broken achievements attached to X4 stimulant and insecticide so they can appear in runs again
 - Fixed other modded enemies spawning during elite events causing hordes of themselves to spawn
+- Fixed stormborn TP effects not going away when the storm ends

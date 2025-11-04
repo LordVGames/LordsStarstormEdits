@@ -49,6 +49,11 @@ namespace LordsStarstormEdits.SS2Edits.Survivors.Knight
         [SystemInitializer(dependencies: typeof(SurvivorCatalog))]
         internal static void AddKnightPassiveToBody()
         {
+            if (!ConfigOptions.AddKnightPassive.Value || !SS2Config.enableBeta.value)
+            {
+                return;
+            }
+
             SS2Content.Survivors.survivorKnight.bodyPrefab.AddComponent<KnightPassiveController>();
 
             SkillLocator knightSkillLocator = SS2Content.Survivors.survivorKnight.bodyPrefab.GetComponent<SkillLocator>();
@@ -62,6 +67,11 @@ namespace LordsStarstormEdits.SS2Edits.Survivors.Knight
         [SystemInitializer(dependencies: typeof(BuffCatalog))]
         internal static void RecolorKnightPassiveBuff()
         {
+            if (!ConfigOptions.AddKnightPassive.Value || !SS2Config.enableBeta.value)
+            {
+                return;
+            }
+            
             SS2Content.Buffs.bdKnightBuff.buffColor = SS2Content.Survivors.survivorKnight.primaryColor;
         }
     }

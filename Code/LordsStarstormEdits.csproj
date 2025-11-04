@@ -29,8 +29,6 @@
 
 		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
 
-		<PackageReference Include="LordVGames-LordsItemEdits" Version="0.3.3" />
-
 		<PackageReference Include="MonoDetour" Version="0.7.5" />
 
 		<PackageReference Include="MonoDetour.HookGen" Version="0.7.3" />

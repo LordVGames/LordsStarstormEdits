@@ -104,6 +104,15 @@
     "SS2_ITEM_SHARDVOID_NAME": "Shards of The Void",
     "SS2_ITEM_SHARDVOID_PICKUP": "A collection of shards made of residual void energy. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
     "SS2_ITEM_SHARDVOID_DESC": "A collection of shards made of residual void energy. Does nothing, but <style=cIsUtility>can be used as a currency</style> elsewhere.",
-    "SS2_ITEM_SHARDVOID_LORE": "???"
+    "SS2_ITEM_SHARDVOID_LORE": "???",
+
+    "SS2_ITEM_SCAVENGERSFORTUNE_NAME": "Scavenger's Fortune",
+    "SS2_ITEM_SCAVENGERSFORTUNE_PICKUP": "Gain a huge boost to health and damage after gaining enough gold.",
+    "SS2_ITEM_SCAVENGERSFORTUNE_DESC": "For every <style=cIsUtility>200 gold</style> <style=cSub>(scales with time)</style> gained, gain a 50% increase to both <style=cIsHealth>health</style> and <style=cIsDamage>damage</style> that lasts 30 <style=cStack>(+30 per stack)</style> seconds.",
+
+    "SS2_EQUIP_SEISMIC OSCILLATOR": "Seismic Oscillator",
+    "SS2_EQUIP_SEISMIC OSCILLATOR_PICKUP": "Deal damage to nearly all grounded enemies.",
+    "SS2_EQUIP_SEISMIC OSCILLATOR_DESC": "For 6 seconds, constantly deal <style=cIsDamage>120% base damage</style> to nearly ALL grounded enemies in the map.",
+    "SS2_EQUIP_SEISMIC OSCILLATOR_LORE": ""
   }
 }

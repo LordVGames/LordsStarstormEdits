@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace LordsStarstormEdits.SS2Edits.Empyreans
 {
-    [MonoDetourTargets(typeof(SS2.Components.Empyrean))]
+    [MonoDetourTargets(typeof(SS2.Components.Empyrean), GenerateControlFlowVariants = true)]
     internal static class RemoveEmpyreanShardDrop
     {
         [MonoDetourHookInitialize]

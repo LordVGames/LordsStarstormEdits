@@ -41,7 +41,10 @@ namespace LordsStarstormEdits.SS2Edits.EtherealStuff
                 if (!body.HasBuff(SS2Content.Buffs.bdUltra))
                 {
                     // not 100% sure about keeping this but ehhhhh it makes things more interesting
-                    args.baseRegenAdd += body.maxHealth *= 0.025f;
+                    if (ConfigOptions.AddHealingToUltraWardBuff.Value)
+                    {
+                        args.baseRegenAdd += body.maxHealth *= 0.025f;
+                    }
                 }
             }
 

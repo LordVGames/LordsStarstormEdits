@@ -16,18 +16,25 @@ Just about all edits here can be toggled on/off. Many of the edits that fill in 
 ### Empyrean Elites
 
 - No longer drops shard(s) on death
+- Cannot spawn during EnemiesReturns' judgement sequence
+
+### Toxic Elites
+
+- Can be toggled off
 
 ### Ethereal-Related
 
 - Shards have actual icons along with new names/descriptions
 - - With how much I was getting the shards I did this to do this to make them feel more complete
+- Most shard drops have been restored
+- - The storm shard item isn't in the current SS2 build however
 - "New" message for when the Zanzan portal spawns
 - - The message exists in the mod, it's just not used
 - Ultra elites have their subtitle from SS1
 - The ultra elites' buff ward is now visible
 - The ultra elites' passive buff is a lil different
 - - The 20% more movement speed and 10% more damage is given also given to the ultra itself
-- - All alies except for the ultra get a tiny amount of % hp regen
+- - All alies except for the ultra get a tiny amount of % hp regen (under separate config option)
 - Zanzan's trade menu & trade teleporter menus have new text for their menu titles
 - Swapped around some of the text for the ethereal sapling to make it more apparent you need to hit it twice
 - Fixed having field accelerator preventing the Zanzan portal from appearing
@@ -45,6 +52,7 @@ Just about all edits here can be toggled on/off. Many of the edits that fill in 
 ### Other
 
 - The lunar gambler has text for its name and interaction prompts.
+- The Scavenger's Fortune and Seismic Oscillator items have a proper name and description
 - Knight's skill descriptions have the numbers filled in
 - - The banner numbers might seem super specific, but the % increases I saw ingame were different from what the code said so I went with what I saw ingame
 - Knight has his (currently unused) passive buff ward

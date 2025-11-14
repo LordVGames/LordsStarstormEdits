@@ -18,9 +18,17 @@ namespace LordsStarstormEdits
         public static ConfigEntry<bool> NewSuperEliteSpawnEventText;
 
         public static ConfigEntry<bool> RemoveEmpyreanShardDrop;
+        public static ConfigEntry<bool> AllowEmpyreansInJudgement;
+        public static ConfigEntry<bool> EnableToxicElite;
 
         public static ConfigEntry<bool> ImplementZanzanPortalAppearText;
         public static ConfigEntry<bool> TweakUltraWardBuff;
+        public static ConfigEntry<bool> AddHealingToUltraWardBuff;
+
+        public static ConfigEntry<bool> RestoreGoldShardDrop;
+        public static ConfigEntry<bool> RestoreVoidShardDrop;
+        //public static ConfigEntry<bool> RestoreStormShardDrops;
+        public static ConfigEntry<bool> RestoreSuperEliteShardDrops;
 
         internal static void BindConfigOptions(ConfigFile config)
         {
@@ -79,6 +87,20 @@ namespace LordsStarstormEdits
                 true,
                 Extensions.ConfigFlags.RestartRequired
             );
+            AllowEmpyreansInJudgement = config.BindOption(
+                "Empyreans",
+                "Allow spawning during EnemiesReturns Judgement",
+                "Empyreans can replace the normal aeonian spawns during the 1st Arraign phase, enable this if you still want that.",
+                false,
+                Extensions.ConfigFlags.RestartRequired
+            );
+            EnableToxicElite = config.BindOption(
+                "Toxic Elites",
+                "Enable elite",
+                "Toxic elites can't be disabled for some reason, so use this if you want to remove them.",
+                true,
+                Extensions.ConfigFlags.RestartRequired
+            );
 
 
             ImplementZanzanPortalAppearText = config.BindOption(
@@ -92,6 +114,44 @@ namespace LordsStarstormEdits
                 "Ethereal Related",
                 "Tweak the passive buff from ultra elites",
                 "Makes the passive buff ultra elites give off also apply to the ultra elite itself, along with the passive buff giving a tiny amount of % hp regen to everyone but ultra elites. This basically makes it like more of a super duper mending elite.",
+                true,
+                Extensions.ConfigFlags.RestartRequired
+            );
+            AddHealingToUltraWardBuff = config.BindOption(
+                "Ethereal Related",
+                "Add slight healing to passive buff from ultra elites",
+                "The healing added is currently jank and heals way more than it should, if you still want it then enable this setting.",
+                false,
+                Extensions.ConfigFlags.RestartRequired
+            );
+
+
+            string otherShardDropCategoryName = "Restored Shard Drop Sources";
+            RestoreGoldShardDrop = config.BindOption(
+                otherShardDropCategoryName,
+                "Restore gold shard drop",
+                "Gold shards drop from completed halcyon shrines.",
+                true,
+                Extensions.ConfigFlags.RestartRequired
+            );
+            RestoreVoidShardDrop = config.BindOption(
+                otherShardDropCategoryName,
+                "Restore void shard drop",
+                "Void shards drop from completed void seeds.",
+                true,
+                Extensions.ConfigFlags.RestartRequired
+            );
+            /*RestoreStormShardDrops = config.BindOption(
+                otherShardDropCategoryName,
+                "Restore storm shard drops",
+                "Storm shards drop when the boss from a stormborn teleporter is beaten.",
+                true,
+                Extensions.ConfigFlags.RestartRequired
+            );*/
+            RestoreSuperEliteShardDrops = config.BindOption(
+                otherShardDropCategoryName,
+                "Restore shard drops from super elites",
+                "Super elites drop shards on death based on the type of super elite they were.",
                 true,
                 Extensions.ConfigFlags.RestartRequired
             );

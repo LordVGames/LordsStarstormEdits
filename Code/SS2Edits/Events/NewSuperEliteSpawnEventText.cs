@@ -11,43 +11,42 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static MSU.GameplayEventTextController;
+namespace LordsStarstormEdits.SS2Edits.Events;
 
-namespace LordsStarstormEdits.SS2Edits.Events
+
+[MonoDetourTargets(typeof(EliteEventMissionController))]
+internal static class NewSuperEliteSpawnEventText
 {
-    [MonoDetourTargets(typeof(EliteEventMissionController))]
-    internal static class NewSuperEliteSpawnEventText
+    [MonoDetourHookInitialize]
+    internal static void Setup()
     {
-        [MonoDetourHookInitialize]
-        internal static void Setup()
+        if (!ConfigOptions.Events.NewSuperEliteSpawnEventText.Value || !SS2Config.enableBeta.value)
         {
-            if (!ConfigOptions.NewSuperEliteSpawnEventText.Value || !SS2Config.enableBeta.value)
+            return;
+        }
+
+        Mdh.SS2.EliteEventMissionController.SpawnBoss.ILHook(ChangeSuperEliteSpawnText);
+    }
+
+
+    private static void ChangeSuperEliteSpawnText(ILManipulationInfo info)
+    {
+        ILWeaver w = new(info);
+
+        w.MatchRelaxed(
+            x => x.MatchLdloc(2),
+            x => x.MatchStloc(1) && w.SetCurrentTo(x)
+        ).ThrowIfFailure();
+        w.InsertAfterCurrent(
+            w.Create(OpCodes.Ldloc_1),
+            w.Create(OpCodes.Stloc_1)
+        );
+        w.InsertBeforeCurrent(
+            w.CreateDelegateCall((EventTextRequest eventTextRequest) =>
             {
-                return;
-            }
-
-            MonoDetourHooks.SS2.EliteEventMissionController.SpawnBoss.ILHook(ChangeSuperEliteSpawnText);
-        }
-
-
-        private static void ChangeSuperEliteSpawnText(ILManipulationInfo info)
-        {
-            ILWeaver w = new(info);
-
-            w.MatchRelaxed(
-                x => x.MatchLdloc(2),
-                x => x.MatchStloc(1) && w.SetCurrentTo(x)
-            ).ThrowIfFailure();
-            w.InsertAfterCurrent(
-                w.Create(OpCodes.Ldloc_1),
-                w.Create(OpCodes.Stloc_1)
-            );
-            w.InsertBeforeCurrent(
-                w.CreateDelegateCall((EventTextRequest eventTextRequest) =>
-                {
-                    eventTextRequest.eventToken = "LSE_SUPER_ELITE_SPAWN";
-                    return eventTextRequest;
-                })
-            );
-        }
+                eventTextRequest.eventToken = "LSE_SUPER_ELITE_SPAWN";
+                return eventTextRequest;
+            })
+        );
     }
 }

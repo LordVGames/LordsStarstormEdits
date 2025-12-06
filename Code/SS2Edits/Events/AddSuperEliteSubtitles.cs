@@ -10,95 +10,93 @@ using SS2.Equipments;
 using System;
 using System.Collections.Generic;
 using System.Text;
+namespace LordsStarstormEdits.SS2Edits.Events;
 
-namespace LordsStarstormEdits.SS2Edits.Events
+internal static class AddSuperEliteSubtitles
 {
-    internal static class AddSuperEliteSubtitles
+    [MonoDetourTargets(typeof(AffixSuperFire.Behavior))]
+    private static class SuperFireSubtitle
     {
-        [MonoDetourTargets(typeof(AffixSuperFire.Behavior))]
-        private static class SuperFireSubtitle
+        [MonoDetourHookInitialize]
+        internal static void Setup()
         {
-            [MonoDetourHookInitialize]
-            internal static void Setup()
+            if (!SS2Config.enableBeta.value)
             {
-                if (!SS2Config.enableBeta.value)
-                {
-                    return;
-                }
-
-                MonoDetourHooks.SS2.Equipments.AffixSuperFire.Behavior.OnEnable.Postfix(AddSubtitle);
+                return;
             }
 
-            private static void AddSubtitle(AffixSuperFire.Behavior self)
-            {
-                self.characterBody.subtitleNameToken = "SS2_EQUIP_AFFIXSUPERFIRE_SUBTITLE";
-            }
+            Mdh.SS2.Equipments.AffixSuperFire.Behavior.OnEnable.Postfix(AddSubtitle);
         }
 
-
-
-        [MonoDetourTargets(typeof(AffixSuperIce.Behavior))]
-        private static class SuperIceSubtitle
+        private static void AddSubtitle(AffixSuperFire.Behavior self)
         {
-            [MonoDetourHookInitialize]
-            internal static void Setup()
-            {
-                if (!SS2Config.enableBeta.value)
-                {
-                    return;
-                }
+            self.characterBody.subtitleNameToken = "SS2_EQUIP_AFFIXSUPERFIRE_SUBTITLE";
+        }
+    }
 
-                MonoDetourHooks.SS2.Equipments.AffixSuperIce.Behavior.OnEnable.Postfix(AddSubtitle);
+
+
+    [MonoDetourTargets(typeof(AffixSuperIce.Behavior))]
+    private static class SuperIceSubtitle
+    {
+        [MonoDetourHookInitialize]
+        internal static void Setup()
+        {
+            if (!SS2Config.enableBeta.value)
+            {
+                return;
             }
 
-            private static void AddSubtitle(AffixSuperIce.Behavior self)
-            {
-                self.characterBody.subtitleNameToken = "SS2_EQUIP_AFFIXSUPERICE_SUBTITLE";
-            }
+            Mdh.SS2.Equipments.AffixSuperIce.Behavior.OnEnable.Postfix(AddSubtitle);
         }
 
-
-
-        [MonoDetourTargets(typeof(AffixSuperLightning.Behavior))]
-        private static class SuperLightningSubtitle
+        private static void AddSubtitle(AffixSuperIce.Behavior self)
         {
-            [MonoDetourHookInitialize]
-            internal static void Setup()
-            {
-                if (!SS2Config.enableBeta.value)
-                {
-                    return;
-                }
+            self.characterBody.subtitleNameToken = "SS2_EQUIP_AFFIXSUPERICE_SUBTITLE";
+        }
+    }
 
-                MonoDetourHooks.SS2.Equipments.AffixSuperLightning.Behavior.OnEnable.Postfix(AddSubtitle);
+
+
+    [MonoDetourTargets(typeof(AffixSuperLightning.Behavior))]
+    private static class SuperLightningSubtitle
+    {
+        [MonoDetourHookInitialize]
+        internal static void Setup()
+        {
+            if (!SS2Config.enableBeta.value)
+            {
+                return;
             }
 
-            private static void AddSubtitle(AffixSuperLightning.Behavior self)
-            {
-                self.characterBody.subtitleNameToken = "SS2_EQUIP_AFFIXSUPERLIGHTNING_SUBTITLE";
-            }
+            Mdh.SS2.Equipments.AffixSuperLightning.Behavior.OnEnable.Postfix(AddSubtitle);
         }
 
-
-
-        [MonoDetourTargets(typeof(AffixSuperEarth.Behavior))]
-        private static class SuperEarthSubtitle
+        private static void AddSubtitle(AffixSuperLightning.Behavior self)
         {
-            [MonoDetourHookInitialize]
-            internal static void Setup()
-            {
-                if (!SS2Config.enableBeta.value)
-                {
-                    return;
-                }
+            self.characterBody.subtitleNameToken = "SS2_EQUIP_AFFIXSUPERLIGHTNING_SUBTITLE";
+        }
+    }
 
-                MonoDetourHooks.SS2.Equipments.AffixSuperEarth.Behavior.OnEnable.Postfix(AddSubtitle);
+
+
+    [MonoDetourTargets(typeof(AffixSuperEarth.Behavior))]
+    private static class SuperEarthSubtitle
+    {
+        [MonoDetourHookInitialize]
+        internal static void Setup()
+        {
+            if (!SS2Config.enableBeta.value)
+            {
+                return;
             }
 
-            private static void AddSubtitle(AffixSuperEarth.Behavior self)
-            {
-                self.characterBody.subtitleNameToken = "SS2_EQUIP_AFFIXSUPEREARTH_SUBTITLE";
-            }
+            Mdh.SS2.Equipments.AffixSuperEarth.Behavior.OnEnable.Postfix(AddSubtitle);
+        }
+
+        private static void AddSubtitle(AffixSuperEarth.Behavior self)
+        {
+            self.characterBody.subtitleNameToken = "SS2_EQUIP_AFFIXSUPEREARTH_SUBTITLE";
         }
     }
 }

@@ -10,22 +10,21 @@ using SS2.Items;
 using System;
 using System.Collections.Generic;
 using System.Text;
+namespace LordsStarstormEdits.SS2Edits.Elites.Toxic;
 
-namespace LordsStarstormEdits.SS2Edits.Elites.Toxic
+
+[MonoDetourTargets(typeof(AffixPurple), GenerateControlFlowVariants = true)]
+internal static class ToxicEliteToggle
 {
-    [MonoDetourTargets(typeof(AffixPurple), GenerateControlFlowVariants = true)]
-    internal static class ToxicEliteToggle
+    [MonoDetourHookInitialize]
+    internal static void Setup()
     {
-        [MonoDetourHookInitialize]
-        internal static void Setup()
-        {
-            MonoDetourHooks.SS2.Equipments.AffixPurple.IsAvailable.ControlFlowPrefix(ShouldWeOrNot);
-        }
+        Mdh.SS2.Equipments.AffixPurple.IsAvailable.ControlFlowPrefix(ShouldWeOrNot);
+    }
 
-        private static ReturnFlow ShouldWeOrNot(AffixPurple self, ref ContentPack contentPack, ref bool returnValue)
-        {
-            returnValue = ConfigOptions.EnableToxicElite.Value;
-            return ReturnFlow.SkipOriginal;
-        }
+    private static ReturnFlow ShouldWeOrNot(AffixPurple self, ref ContentPack contentPack, ref bool returnValue)
+    {
+        returnValue = ConfigOptions.Elites.EnableToxicElite.Value;
+        return ReturnFlow.SkipOriginal;
     }
 }

@@ -11,43 +11,42 @@ using SS2.Items;
 using System;
 using System.Collections.Generic;
 using System.Text;
+namespace LordsStarstormEdits.SS2Edits.Survivors.Chirr;
 
-namespace LordsStarstormEdits.SS2Edits.Survivors.Chirr
+
+[MonoDetourTargets(typeof(ChirrFriendOrb.ConvertBehavior))]
+internal static class ChirrTameLingerFixAgain
 {
-    [MonoDetourTargets(typeof(ChirrFriendOrb.ConvertBehavior))]
-    internal static class ChirrTameLingerFixAgain
+    [MonoDetourHookInitialize]
+    internal static void Setup()
     {
-        [MonoDetourHookInitialize]
-        internal static void Setup()
-        {
-            MonoDetourHooks.SS2.Components.ChirrFriendOrb.ConvertBehavior.OnTakeDamageServer.ILHook(DoChirrTameLingerBandaidFix);
-        }
+        Mdh.SS2.Components.ChirrFriendOrb.ConvertBehavior.OnTakeDamageServer.ILHook(DoChirrTameLingerBandaidFix);
+    }
 
-        private static void DoChirrTameLingerBandaidFix(ILManipulationInfo info)
-        {
-            ILWeaver w = new(info);
-            ILLabel returnLabel = w.DefineLabel();
+    private static void DoChirrTameLingerBandaidFix(ILManipulationInfo info)
+    {
+        ILWeaver w = new(info);
+        ILLabel returnLabel = w.DefineLabel();
 
-            w.MatchRelaxed(
-                x => x.MatchLdarg(1),
-                x => x.MatchLdfld<DamageReport>("victimBody"),
-                x => x.MatchCallvirt<CharacterBody>("get_isPlayerControlled"),
-                x => x.MatchBrtrue(out returnLabel) && w.SetCurrentTo(x)
-            ).ThrowIfFailure();
-            w.InsertAfterCurrent(
-                w.Create(OpCodes.Ldarg_1)
-            );
-            w.InsertAfterCurrent(
-                w.CreateDelegateCall(
-                    (DamageReport damageReport) =>
-                    {
-                        return damageReport.victimBody != null && damageReport.victimBody.HasBuff(SS2Content.Buffs.BuffChirrConvert);
-                    }
-                )
-            );
-            w.InsertAfterCurrent(
-                w.Create(OpCodes.Brfalse, returnLabel)
-            );
-        }
+        w.MatchRelaxed(
+            x => x.MatchLdarg(1),
+            x => x.MatchLdfld<DamageReport>("victimBody"),
+            x => x.MatchCallvirt<CharacterBody>("get_isPlayerControlled"),
+            x => x.MatchBrtrue(out returnLabel) && w.SetCurrentTo(x)
+        ).ThrowIfFailure();
+        w.InsertAfterCurrent(
+            w.Create(OpCodes.Ldarg_1)
+        );
+        w.InsertAfterCurrent(
+            w.CreateDelegateCall(
+                (DamageReport damageReport) =>
+                {
+                    return damageReport.victimBody != null && damageReport.victimBody.HasBuff(SS2Content.Buffs.BuffChirrConvert);
+                }
+            )
+        );
+        w.InsertAfterCurrent(
+            w.Create(OpCodes.Brfalse, returnLabel)
+        );
     }
 }

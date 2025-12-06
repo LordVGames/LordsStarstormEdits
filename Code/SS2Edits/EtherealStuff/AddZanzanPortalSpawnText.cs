@@ -9,33 +9,32 @@ using SS2;
 using System;
 using System.Collections.Generic;
 using System.Text;
+namespace LordsStarstormEdits.SS2Edits.EtherealStuff;
 
-namespace LordsStarstormEdits.SS2Edits.EtherealStuff
+
+// the token for this exists in SS2 already, it's just not used for some reason
+[MonoDetourTargets(typeof(SS2.TeleporterUpgradeController))]
+internal static class AddZanzanPortalSpawnText
 {
-    // the token for this exists in SS2 already, it's just not used for some reason
-    [MonoDetourTargets(typeof(SS2.TeleporterUpgradeController))]
-    internal static class AddZanzanPortalSpawnText
+    [MonoDetourHookInitialize]
+    internal static void Setup()
     {
-        [MonoDetourHookInitialize]
-        internal static void Setup()
+        if (!ConfigOptions.Ethereal.ImplementZanzanPortalAppearText.Value || !SS2Config.enableBeta.value)
         {
-            if (!ConfigOptions.ImplementZanzanPortalAppearText.Value || !SS2Config.enableBeta.value)
-            {
-                return;
-            }
-
-            MonoDetourHooks.SS2.TeleporterUpgradeController.OnTeleporterChargedGlobal.ILHook(ImplementExistingText);
+            return;
         }
 
-        private static void ImplementExistingText(ILManipulationInfo info)
-        {
-            ILWeaver w = new(info);
+        Mdh.SS2.TeleporterUpgradeController.OnTeleporterChargedGlobal.ILHook(ImplementExistingText);
+    }
 
-            // r.i.p oortal
-            w.MatchRelaxed(
-                x => x.MatchLdstr("hehe oortal") && w.SetCurrentTo(x)
-            ).ThrowIfFailure();
-            w.Current.Operand = "SS2_PORTAL_VOIDSHOP_APPEAR";
-        }
+    private static void ImplementExistingText(ILManipulationInfo info)
+    {
+        ILWeaver w = new(info);
+
+        // r.i.p oortal
+        w.MatchRelaxed(
+            x => x.MatchLdstr("hehe oortal") && w.SetCurrentTo(x)
+        ).ThrowIfFailure();
+        w.Current.Operand = "SS2_PORTAL_VOIDSHOP_APPEAR";
     }
 }

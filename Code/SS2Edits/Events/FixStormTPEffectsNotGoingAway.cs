@@ -11,41 +11,39 @@ using System.Collections.Generic;
 using System.Text;
 using RoR2;
 using HarmonyLib;
+namespace LordsStarstormEdits.SS2Edits.Events;
 
-namespace LordsStarstormEdits.SS2Edits.Events
+[MonoDetourTargets(typeof(EntityStates.Events.Storm))]
+internal static class FixStormTPEffectsNotGoingAway
 {
-    [MonoDetourTargets(typeof(EntityStates.Events.Storm))]
-    internal static class FixStormTPEffectsNotGoingAway
+    [MonoDetourHookInitialize]
+    internal static void Setup()
     {
-        [MonoDetourHookInitialize]
-        internal static void Setup()
-        {
-            MonoDetourHooks.EntityStates.Events.Storm.FixedUpdate.ILHook(RemoveStormEffects);
-        }
+        Mdh.EntityStates.Events.Storm.FixedUpdate.ILHook(RemoveStormEffects);
+    }
 
-        private static void RemoveStormEffects(ILManipulationInfo info)
-        {
-            ILWeaver w = new(info);
-            ILLabel returnLabel = w.DefineLabel();
+    private static void RemoveStormEffects(ILManipulationInfo info)
+    {
+        ILWeaver w = new(info);
+        ILLabel returnLabel = w.DefineLabel();
 
-            w.MatchRelaxed(
-                x => x.MatchLdarg(0),
-                x => x.MatchLdfld<EntityStates.EntityState>("outer"),
-                x => x.MatchNewobj(out _),
-                x => x.MatchCallvirt<EntityStateMachine>("SetNextState") && w.SetCurrentTo(x)
-            ).ThrowIfFailure();
-            w.InsertAfterCurrent(
-                w.Create(OpCodes.Ldsfld, AccessTools.DeclaredField(typeof(TeleporterUpgradeController), nameof(TeleporterUpgradeController.instance)))
-            );
-            w.InsertAfterCurrent(
-                w.CreateDelegateCall(
-                    (TeleporterUpgradeController teleporterUpgradeController) =>
-                    {
-                        // why was this line removed? im gonna guess it's by accident ngl
-                        if (teleporterUpgradeController) teleporterUpgradeController.UpgradeStorm(false);
-                    }
-                )
-            );
-        }
+        w.MatchRelaxed(
+            x => x.MatchLdarg(0),
+            x => x.MatchLdfld<EntityStates.EntityState>("outer"),
+            x => x.MatchNewobj(out _),
+            x => x.MatchCallvirt<EntityStateMachine>("SetNextState") && w.SetCurrentTo(x)
+        ).ThrowIfFailure();
+        w.InsertAfterCurrent(
+            w.Create(OpCodes.Ldsfld, AccessTools.DeclaredField(typeof(TeleporterUpgradeController), nameof(TeleporterUpgradeController.instance)))
+        );
+        w.InsertAfterCurrent(
+            w.CreateDelegateCall(
+                (TeleporterUpgradeController teleporterUpgradeController) =>
+                {
+                    // why was this line removed? im gonna guess it's by accident ngl
+                    if (teleporterUpgradeController) teleporterUpgradeController.UpgradeStorm(false);
+                }
+            )
+        );
     }
 }

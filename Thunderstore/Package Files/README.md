@@ -6,6 +6,10 @@ Just about all edits here can be toggled on/off. Many of the edits that fill in 
 
 ## Changes
 
+### Item Edits
+
+
+
 ### Chirr
 
 - Minions don't receive your healing items
@@ -37,7 +41,6 @@ Just about all edits here can be toggled on/off. Many of the edits that fill in 
 - - All alies except for the ultra get a tiny amount of % hp regen (under separate config option)
 - Zanzan's trade menu & trade teleporter menus have new text for their menu titles
 - Swapped around some of the text for the ethereal sapling to make it more apparent you need to hit it twice
-- Fixed having field accelerator preventing the Zanzan portal from appearing
 - Item potential drops from the trade teleporter show for clients now
 - - Not really a fix as I just made it use the vanilla potential that still works for clients instead of the cloned one
 
@@ -56,6 +59,4 @@ Just about all edits here can be toggled on/off. Many of the edits that fill in 
 - Knight's skill descriptions have the numbers filled in
 - - The banner numbers might seem super specific, but the % increases I saw ingame were different from what the code said so I went with what I saw ingame
 - Knight has his (currently unused) passive buff ward
-- Removed the broken achievements attached to X4 stimulant and insecticide so they can appear in runs again
-- Fixed other modded enemies spawning during elite events causing hordes of themselves to spawn
 - Fixed stormborn TP effects not going away when the storm ends

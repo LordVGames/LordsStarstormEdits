@@ -113,6 +113,14 @@
     "SS2_EQUIP_SEISMIC OSCILLATOR": "Seismic Oscillator",
     "SS2_EQUIP_SEISMIC OSCILLATOR_PICKUP": "Deal damage to nearly all grounded enemies.",
     "SS2_EQUIP_SEISMIC OSCILLATOR_DESC": "For 6 seconds, constantly deal <style=cIsDamage>120% base damage</style> to nearly ALL grounded enemies in the map.",
-    "SS2_EQUIP_SEISMIC OSCILLATOR_LORE": ""
+
+    "LSE_ITEM_ERRATICGADGET_EDIT1_PICKUP": "Your non-void lightning damage is doubled. Chance to fire chain lightning on hit.",
+    "LSE_ITEM_ERRATICGADGET_EDIT1_DESC": "Your <style=cIsDamage>lightning damage</style> is multiplied by <style=cIsDamage>2x</style>. <style=cIsVoid>Void lightning</style> is <style=cDeath>not affected</style>. <style=cIsDamage>10%</style> chance on hit to fire <style=cIsDamage>chain lightning</style> for <style=cIsDamage>300%</style> TOTAL damage on up to <style=cIsDamage>1</style> <style=cStack>(+1 per stack)</style> targets.",
+
+    "LSE_ITEM_ERRATICGADGET_EDIT2_PICKUP": "Gain a huge increase to your lightning damage.",
+    "LSE_ITEM_ERRATICGADGET_EDIT2_DESC": "Your <style=cIsDamage>lightning damage</style> is multiplied by <style=cIsDamage>3x</style> <style=cStack>(+1.5x per stack)</style>. <style=cIsVoid>Void lightning</style> is <style=cDeath>not affected</style>.",
+
+    "LSE_ITEM_PORTABLEREACTOR_EDIT_PICKUP": "Gain a large amount of armor and speed for some time after entering a stage.",
+    "LSE_ITEM_PORTABLEREACTOR_EDIT_DESC": "Gain <style=cIsUtility>100 armor</style> and <style=cIsUtility>+100% movement speed</style> for the first <style=cIsUtility>80s</style> <style=cStack>(+40s per stack)</style> of a stage."
   }
 }

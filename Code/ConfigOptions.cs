@@ -3,32 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using BepInEx.Configuration;
 using MiscFixes.Modules;
+namespace LordsStarstormEdits;
 
-namespace LordsStarstormEdits
+
+public static class ConfigOptions
 {
-    public static class ConfigOptions
+    public static class Chirr
     {
         public static ConfigEntry<bool> ChirrMinionsNoHealingItems;
         public static ConfigEntry<bool> ChirrNoTamingTerminals;
         public static ConfigEntry<bool> ChirrTameLingerFix;
-
-        public static ConfigEntry<bool> AddKnightPassive;
-
-        public static ConfigEntry<bool> NewStormEventText;
-        public static ConfigEntry<bool> NewSuperEliteSpawnEventText;
-
-        public static ConfigEntry<bool> RemoveEmpyreanShardDrop;
-        public static ConfigEntry<bool> AllowEmpyreansInJudgement;
-        public static ConfigEntry<bool> EnableToxicElite;
-
-        public static ConfigEntry<bool> ImplementZanzanPortalAppearText;
-        public static ConfigEntry<bool> TweakUltraWardBuff;
-        public static ConfigEntry<bool> AddHealingToUltraWardBuff;
-
-        public static ConfigEntry<bool> RestoreGoldShardDrop;
-        public static ConfigEntry<bool> RestoreVoidShardDrop;
-        //public static ConfigEntry<bool> RestoreStormShardDrops;
-        public static ConfigEntry<bool> RestoreSuperEliteShardDrops;
 
         internal static void BindConfigOptions(ConfigFile config)
         {
@@ -53,8 +37,15 @@ namespace LordsStarstormEdits
                 true,
                 Extensions.ConfigFlags.RestartRequired
             );
+        }
+    }
 
+    public static class Knight
+    {
+        public static ConfigEntry<bool> AddKnightPassive;
 
+        internal static void BindConfigOptions(ConfigFile config)
+        {
             AddKnightPassive = config.BindOption(
                 "Knight",
                 "Add his unused passive",
@@ -62,8 +53,16 @@ namespace LordsStarstormEdits
                 true,
                 Extensions.ConfigFlags.RestartRequired
             );
+        }
+    }
 
+    public static class Events
+    {
+        public static ConfigEntry<bool> NewStormEventText;
+        public static ConfigEntry<bool> NewSuperEliteSpawnEventText;
 
+        internal static void BindConfigOptions(ConfigFile config)
+        {
             NewStormEventText = config.BindOption(
                 "Storms",
                 "New storm text",
@@ -78,8 +77,17 @@ namespace LordsStarstormEdits
                 true,
                 Extensions.ConfigFlags.RestartRequired
             );
+        }
+    }
 
+    public static class Elites
+    {
+        public static ConfigEntry<bool> RemoveEmpyreanShardDrop;
+        public static ConfigEntry<bool> AllowEmpyreansInJudgement;
+        public static ConfigEntry<bool> EnableToxicElite;
 
+        internal static void BindConfigOptions(ConfigFile config)
+        {
             RemoveEmpyreanShardDrop = config.BindOption(
                 "Empyreans",
                 "Remove shard drop",
@@ -101,8 +109,17 @@ namespace LordsStarstormEdits
                 true,
                 Extensions.ConfigFlags.RestartRequired
             );
+        }
+    }
 
+    public static class Ethereal
+    {
+        public static ConfigEntry<bool> ImplementZanzanPortalAppearText;
+        public static ConfigEntry<bool> TweakUltraWardBuff;
+        public static ConfigEntry<bool> AddHealingToUltraWardBuff;
 
+        internal static void BindConfigOptions(ConfigFile config)
+        {
             ImplementZanzanPortalAppearText = config.BindOption(
                 "Ethereal Related",
                 "Implement unused Zanzan portal appearance text",
@@ -124,9 +141,20 @@ namespace LordsStarstormEdits
                 false,
                 Extensions.ConfigFlags.RestartRequired
             );
+        }
+    }
 
+    public static class Shards
+    {
+        public static ConfigEntry<bool> RestoreGoldShardDrop;
+        public static ConfigEntry<bool> RestoreVoidShardDrop;
+        //public static ConfigEntry<bool> RestoreStormShardDrops;
+        public static ConfigEntry<bool> RestoreSuperEliteShardDrops;
 
+        internal static void BindConfigOptions(ConfigFile config)
+        {
             string otherShardDropCategoryName = "Restored Shard Drop Sources";
+
             RestoreGoldShardDrop = config.BindOption(
                 otherShardDropCategoryName,
                 "Restore gold shard drop",
@@ -155,9 +183,58 @@ namespace LordsStarstormEdits
                 true,
                 Extensions.ConfigFlags.RestartRequired
             );
-
-
-            config.WipeConfig();
         }
+    }
+
+    public static class ItemEdits
+    {
+        public static ConfigEntry<bool> ArmedBackpack;
+
+        public enum ErraticGadgetEditType
+        {
+            None = 0,
+            DamageMultAndOnHitProc,
+            OnlyDamageMult
+        }
+        public static ConfigEntry<ErraticGadgetEditType> ErraticGadget;
+
+        public static ConfigEntry<bool> PortableReactor;
+
+        internal static void BindConfigOptions(ConfigFile config)
+        {
+            ArmedBackpack = config.BindOption(
+                "Other Item Edits",
+                "Armed Backpack",
+                "Replaces the missile projectile with a missile orb, similar to the ones plasma shrimp uses.",
+                true
+            );
+            ErraticGadget = config.BindOption(
+                "Other Item Edits",
+                "Erratic Gadget",
+                "2 Different edits:\n\nDamageMultAndOnHitProc: Doubled lightning damage and chance to do chain lightning on hit. Stacks increase chance and targets hit.\n\nOnlyDamageMult: 3x lightning damage, stacks add to the damage multiplier.\n\nAnd of course a None option for if you don't want either.",
+                ErraticGadgetEditType.DamageMultAndOnHitProc,
+                Extensions.ConfigFlags.RestartRequired
+            );
+            PortableReactor = config.BindOption(
+                "Other Item Edits",
+                "Portable Reactor",
+                "Makes portable reactor give 100 armor instead of invulnerability while active.",
+                true,
+                Extensions.ConfigFlags.RestartRequired
+            );
+        }
+    }
+
+    internal static void BindAllConfigOptions(ConfigFile config)
+    {
+        Chirr.BindConfigOptions(config);
+        Knight.BindConfigOptions(config);
+        Events.BindConfigOptions(config);
+        Elites.BindConfigOptions(config);
+        Ethereal.BindConfigOptions(config);
+        Shards.BindConfigOptions(config);
+        ItemEdits.BindConfigOptions(config);
+
+        config.WipeConfig();
     }
 }

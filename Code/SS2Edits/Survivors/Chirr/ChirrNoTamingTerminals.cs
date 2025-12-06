@@ -10,35 +10,34 @@ using SS2.Components;
 using System;
 using System.Collections.Generic;
 using System.Text;
+namespace LordsStarstormEdits.SS2Edits.Survivors.Chirr;
 
-namespace LordsStarstormEdits.SS2Edits.Survivors.Chirr
+
+[MonoDetourTargets(typeof(ChirrFriendTracker), GenerateControlFlowVariants = true)]
+internal static class ChirrNoTamingTerminals
 {
-    [MonoDetourTargets(typeof(ChirrFriendTracker), GenerateControlFlowVariants = true)]
-    internal static class ChirrNoTamingTerminals
+    [MonoDetourHookInitialize]
+    internal static void Setup()
     {
-        [MonoDetourHookInitialize]
-        internal static void Setup()
+        if (!ConfigOptions.Chirr.ChirrNoTamingTerminals.Value)
         {
-            if (!ConfigOptions.ChirrNoTamingTerminals.Value)
-            {
-                return;
-            }
-
-            // i could IL hook this but ehhhhhhh whatever this is easier
-            MonoDetourHooks.SS2.Components.ChirrFriendTracker.CheckBody.ControlFlowPrefix(DontLetTerminalsBeTamed);
+            return;
         }
 
-        private static ReturnFlow DontLetTerminalsBeTamed(ChirrFriendTracker self, ref CharacterBody body, ref bool returnValue)
-        {
-            if (body == null || body.inventory == null)
-            {
-                returnValue = false;
-                return ReturnFlow.SkipOriginal;
-            }
+        // i could IL hook this but ehhhhhhh whatever this is easier
+        Mdh.SS2.Components.ChirrFriendTracker.CheckBody.ControlFlowPrefix(DontLetTerminalsBeTamed);
+    }
 
-            bool isTerminal = body.inventory.GetItemCount(SS2Content.Items.TerminationHelper) > 0;
-            returnValue = !body.isBoss && !isTerminal;
+    private static ReturnFlow DontLetTerminalsBeTamed(ChirrFriendTracker self, ref CharacterBody body, ref bool returnValue)
+    {
+        if (body == null || body.inventory == null)
+        {
+            returnValue = false;
             return ReturnFlow.SkipOriginal;
         }
+
+        bool isTerminal = body.inventory.GetItemCountPermanent(SS2Content.Items.TerminationHelper) > 0;
+        returnValue = !body.isBoss && !isTerminal;
+        return ReturnFlow.SkipOriginal;
     }
 }

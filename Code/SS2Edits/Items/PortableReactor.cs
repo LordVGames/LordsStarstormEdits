@@ -26,6 +26,7 @@ internal static class PortableReactor
         }
 
         Mdh.SS2.Items.PortableReactor.GetStatCoefficients.Postfix(AlsoGiveArmorWhenActive);
+        Mdh.SS2.Items.PortableReactor.Behavior.OnIncomingDamageServer.ILHook(RemoveInvulnerability);
     }
 
     private static void AlsoGiveArmorWhenActive(SS2.Items.PortableReactor self, ref CharacterBody sender, ref RecalculateStatsAPI.StatHookEventArgs args)
@@ -34,6 +35,20 @@ internal static class PortableReactor
         {
             args.armorAdd += 100;
         }
+    }
+
+    private static void RemoveInvulnerability(ILManipulationInfo info)
+    {
+        ILWeaver w = new(info);
+        Instruction startOfBadLine = null!;
+        Instruction endOfBadLine = null!;
+
+        w.MatchRelaxed(
+            x => x.MatchLdarg(1) && w.SetInstructionTo(ref startOfBadLine, x),
+            x => x.MatchLdcI4(1),
+            x => x.MatchStfld<DamageInfo>("rejected") && w.SetInstructionTo(ref endOfBadLine, x)
+        );
+        w.InsertBranchOver(startOfBadLine, endOfBadLine);
     }
 
     [SystemInitializer(dependencies: typeof(ItemCatalog))]

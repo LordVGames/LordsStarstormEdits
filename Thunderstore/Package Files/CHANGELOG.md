@@ -1,3 +1,7 @@
+# 1.2.1
+
+- Fixed compatibility with edited Armed Backpack and LordsItemEdits' Pocket I.C.B.M
+
 # 1.2.0
 
 - Fixed for latest SS2 and latest MonoDetour

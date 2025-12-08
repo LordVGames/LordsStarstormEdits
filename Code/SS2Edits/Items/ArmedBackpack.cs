@@ -50,7 +50,6 @@ internal static class ArmedBackpack
         .MarkLabelToCurrentNext(skipFireMissile);
     }
 
-    [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
     private static bool FireMissileOrbIfApplicable(float missileDamage, DamageReport damageReport)
     {
         if (!ConfigOptions.ItemEdits.ArmedBackpack.Value)
@@ -79,9 +78,9 @@ internal static class ArmedBackpack
 
         if (damageReport.victimBody.inventory?.GetItemCountEffective(DLC1Content.Items.MoreMissile) > 0)
         {
-            if (ModSoftDependencies.LordsItemEditsMod.PocketICBMEditEnabled)
+            if (ModSoftDependencies.LordsItemEditsMod.ModIsRunning)
             {
-                missileOrb.damageValue *= ModSoftDependencies.LordsItemEditsMod.GetEditedICBMDamageMult(damageReport.attackerBody);
+                missileOrb.damageValue *= ModSoftDependencies.LordsItemEditsMod.GetEditedICBMDamageMult(damageReport.victimBody);
             }
             else
             {

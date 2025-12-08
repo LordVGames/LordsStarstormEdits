@@ -13,34 +13,15 @@ internal static class ModSoftDependencies
         {
             get
             {
-                _enabled ??= BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey(LordsItemEdits.Plugin.PluginGUID);
+                _enabled ??= BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey(LordsItemEdits.Plugin.Id);
                 return (bool)_enabled;
             }
         }
 
-
-        internal static bool PocketICBMEditEnabled
-        {
-            [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-            get
-            {
-                if (!ModIsRunning)
-                {
-                    return false;
-                }
-                return LordsItemEdits.ConfigOptions.PocketICBM.EnableEdit.Value;
-            }
-        }
-
-
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        internal static float GetEditedICBMDamageMult(CharacterBody attackerBody)
+        internal static float GetEditedICBMDamageMult(CharacterBody victimBody)
         {
-            if (!ModIsRunning || !PocketICBMEditEnabled)
-            {
-                return 1;
-            }
-            return LordsItemEdits.ItemEdits.PocketICBM.GetICBMDamageMult(attackerBody);
+            return LordsItemEdits.ItemEdits.PocketICBM.GetICBMDamageMult(victimBody);
         }
     }
 }

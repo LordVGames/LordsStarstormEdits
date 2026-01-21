@@ -400,8 +400,8 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Manually added for the unity project
-/Unity/LSEAssets/AssetBundles
-/Unity/LSEAssets/Library
-/Unity/LSEAssets/Logs
-/Unity/LSEAssets/Packages
-/Unity/LSEAssets/Temp
+/Unity/SS22Assets/AssetBundles
+/Unity/SS22Assets/Library
+/Unity/SS22Assets/Logs
+/Unity/SS22Assets/Packages
+/Unity/SS22Assets/Temp

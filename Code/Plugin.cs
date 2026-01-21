@@ -1,6 +1,7 @@
 using BepInEx;
 using MonoDetour;
-namespace LordsStarstormEdits;
+using RoR2;
+namespace StarstormSquared;
 
 
 [BepInDependency(SS2.SS2Main.GUID, BepInDependency.DependencyFlags.HardDependency)]
@@ -17,5 +18,7 @@ public partial class Plugin : BaseUnityPlugin
         ConfigOptions.BindAllConfigOptions(Config);
         MyAssets.Init();
         MonoDetourManager.InvokeHookInitializers(typeof(Plugin).Assembly);
+        ItemCatalog.availability.CallWhenAvailable(SS2Edits.Items.RemoveBrokenItemAchievements.YouShallWorkAgain);
+        RoR2Application.onLoad += SS2Edits.Survivors.SurvivorIcons.ChangeSurvivorIcons;
     }
 }

@@ -10,7 +10,8 @@ using SS2.Items;
 using System;
 using System.Collections.Generic;
 using System.Text;
-namespace LordsStarstormEdits.SS2Edits.EtherealStuff;
+namespace StarstormSquared.SS2Edits.Elites.Ultra;
+
 
 [MonoDetourTargets(typeof(AffixUltra), GenerateControlFlowVariants = true)]
 internal static class AddUltraEliteSubtitle
@@ -27,10 +28,9 @@ internal static class AddUltraEliteSubtitle
         Mdh.SS2.Items.AffixUltra.BodyBehavior.Start.Postfix(AddSS1Subtitle);
     }
 
-    // can't really store the subtitle without messing with FixedConditionalWeakTables and i don't think it matters that much
+    // can't really store the subtitle without messing with FixedConditionalWeakTables but i don't think it matters that much
     private static void AddSS1Subtitle(AffixUltra.BodyBehavior self)
     {
-        self.body?.subtitleNameToken = "LSE_ULTRA_SUBTITLE_SS1";
-        Log.Warning(self.body?.subtitleNameToken);
+        self.body?.subtitleNameToken = "SS22_ULTRA_SUBTITLE_SS1";
     }
 }

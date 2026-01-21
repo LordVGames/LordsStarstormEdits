@@ -10,7 +10,7 @@ using SS2.Items;
 using System;
 using System.Collections.Generic;
 using System.Text;
-namespace LordsStarstormEdits.SS2Edits.Elites.Toxic;
+namespace StarstormSquared.SS2Edits.Elites.Toxic;
 
 
 [MonoDetourTargets(typeof(AffixPurple), GenerateControlFlowVariants = true)]
@@ -24,7 +24,7 @@ internal static class ToxicEliteToggle
 
     private static ReturnFlow ShouldWeOrNot(AffixPurple self, ref ContentPack contentPack, ref bool returnValue)
     {
-        returnValue = ConfigOptions.Elites.EnableToxicElite.Value;
+        returnValue = ConfigOptions.Elites.Toxic.EnableToxicElite.Value;
         return ReturnFlow.SkipOriginal;
     }
 }

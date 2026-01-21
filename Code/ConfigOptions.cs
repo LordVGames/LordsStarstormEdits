@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using BepInEx.Configuration;
 using MiscFixes.Modules;
-namespace LordsStarstormEdits;
+namespace StarstormSquared;
 
 
 public static class ConfigOptions
@@ -82,41 +82,95 @@ public static class ConfigOptions
 
     public static class Elites
     {
-        public static ConfigEntry<bool> RemoveEmpyreanShardDrop;
-        public static ConfigEntry<bool> AllowEmpyreansInJudgement;
-        public static ConfigEntry<bool> EnableToxicElite;
-
-        internal static void BindConfigOptions(ConfigFile config)
+        public static class Empyrean
         {
-            RemoveEmpyreanShardDrop = config.BindOption(
-                "Empyreans",
-                "Remove shard drop",
-                "Prevents empyrean elites from dropping a random shard on death.",
-                true,
-                Extensions.ConfigFlags.RestartRequired
-            );
-            AllowEmpyreansInJudgement = config.BindOption(
-                "Empyreans",
-                "Allow spawning during EnemiesReturns Judgement",
-                "Empyreans can replace the normal aeonian spawns during the 1st Arraign phase, enable this if you still want that.",
-                false,
-                Extensions.ConfigFlags.RestartRequired
-            );
-            EnableToxicElite = config.BindOption(
-                "Toxic Elites",
-                "Enable elite",
-                "Toxic elites can't be disabled for some reason, so use this if you want to remove them.",
-                true,
-                Extensions.ConfigFlags.RestartRequired
-            );
+            private const string _sectionName = "Empyrean Elites";
+            public static ConfigEntry<bool> RemoveEmpyreanShardDrop;
+            public static ConfigEntry<bool> AllowEmpyreansInJudgement;
+            public static ConfigEntry<int> CustomEmpyreanLevelUpInterval;
+
+            internal static void BindConfigOptions(ConfigFile config)
+            {
+                RemoveEmpyreanShardDrop = config.BindOption(
+                    _sectionName,
+                    "Remove shard drop",
+                    "Prevents empyrean elites from dropping a random shard on death.",
+                    true,
+                    Extensions.ConfigFlags.RestartRequired
+                );
+                AllowEmpyreansInJudgement = config.BindOption(
+                    _sectionName,
+                    "Allow spawning during EnemiesReturns Judgement",
+                    "Empyreans can replace the normal aeonian spawns during the 1st Arraign phase, enable this if you still want that.",
+                    false,
+                    Extensions.ConfigFlags.RestartRequired
+                );
+                CustomEmpyreanLevelUpInterval = config.BindOptionSlider(
+                    _sectionName,
+                    "Custom Empyrean Level Up Interval",
+                    "Empyreans level up and gain doubled stats + a lot of HP every number of stages after the first stage they can appear on, that being stage 9. Change this number to change how many stages it takes for empyreans to level up.",
+                    5
+                );
+            }
+        }
+
+
+        public static class Ultra
+        {
+            public static ConfigEntry<bool> TweakUltraWardBuff;
+            public static ConfigEntry<bool> AddHealingToUltraWardBuff;
+
+
+            internal static void BindConfigOptions(ConfigFile config)
+            {
+                TweakUltraWardBuff = config.BindOption(
+                    "Ethereal Related",
+                    "Tweak the passive buff from ultra elites",
+                    "Makes the passive buff ultra elites give off also apply to the ultra elite itself, along with the passive buff giving a tiny amount of % hp regen to everyone but ultra elites. This basically makes it like more of a super duper mending elite.",
+                    true,
+                    Extensions.ConfigFlags.RestartRequired
+                );
+                AddHealingToUltraWardBuff = config.BindOption(
+                    "Ethereal Related",
+                    "Add slight healing to passive buff from ultra elites",
+                    "The healing added is currently jank and heals way more than it should, if you still want it then enable this setting.",
+                    false,
+                    Extensions.ConfigFlags.RestartRequired
+                );
+            }
+        }
+
+        public static class Toxic
+        {
+            private const string _sectionName = "Toxic Elites";
+            public static ConfigEntry<bool> EnableToxicElite;
+
+            internal static void BindConfigOptions(ConfigFile config)
+            {
+                EnableToxicElite = config.BindOption(
+                    _sectionName,
+                    "Enable elite",
+                    "Toxic elites can't be disabled for some reason, so use this if you want to remove them.",
+                    true,
+                    Extensions.ConfigFlags.RestartRequired
+                );
+            }
+        }
+
+
+        internal static void BindAllConfigOptions(ConfigFile config)
+        {
+            Empyrean.BindConfigOptions(config);
+            Ultra.BindConfigOptions(config);
+            Toxic.BindConfigOptions(config);
         }
     }
 
     public static class Ethereal
     {
         public static ConfigEntry<bool> ImplementZanzanPortalAppearText;
-        public static ConfigEntry<bool> TweakUltraWardBuff;
-        public static ConfigEntry<bool> AddHealingToUltraWardBuff;
+        public static ConfigEntry<bool> AddCraftingChefToZanzanStage;
+        public static ConfigEntry<bool> ChangeReplaceNewtWithEthereal;
 
         internal static void BindConfigOptions(ConfigFile config)
         {
@@ -127,19 +181,17 @@ public static class ConfigOptions
                 true,
                 Extensions.ConfigFlags.RestartRequired
             );
-            TweakUltraWardBuff = config.BindOption(
+            AddCraftingChefToZanzanStage = config.BindOption(
                 "Ethereal Related",
-                "Tweak the passive buff from ultra elites",
-                "Makes the passive buff ultra elites give off also apply to the ultra elite itself, along with the passive buff giving a tiny amount of % hp regen to everyone but ultra elites. This basically makes it like more of a super duper mending elite.",
-                true,
-                Extensions.ConfigFlags.RestartRequired
+                "Add a crafting chef to the strangers hideout",
+                "It is put on top of the roof that Zanzan the faded sits under.",
+                true
             );
-            AddHealingToUltraWardBuff = config.BindOption(
+            ChangeReplaceNewtWithEthereal = config.BindOption(
                 "Ethereal Related",
-                "Add slight healing to passive buff from ultra elites",
-                "The healing added is currently jank and heals way more than it should, if you still want it then enable this setting.",
-                false,
-                Extensions.ConfigFlags.RestartRequired
+                "Make ethereal sapling spawn in stage-specific spots instead of newt altar spots.",
+                "In stages without a pre-determined spot they will still spawn in a newt atltar spot.",
+                false
             );
         }
     }
@@ -153,7 +205,7 @@ public static class ConfigOptions
 
         internal static void BindConfigOptions(ConfigFile config)
         {
-            string otherShardDropCategoryName = "Restored Shard Drop Sources";
+            string otherShardDropCategoryName = "Restore Shard Drops";
 
             RestoreGoldShardDrop = config.BindOption(
                 otherShardDropCategoryName,
@@ -230,11 +282,9 @@ public static class ConfigOptions
         Chirr.BindConfigOptions(config);
         Knight.BindConfigOptions(config);
         Events.BindConfigOptions(config);
-        Elites.BindConfigOptions(config);
+        Elites.BindAllConfigOptions(config);
         Ethereal.BindConfigOptions(config);
         Shards.BindConfigOptions(config);
         ItemEdits.BindConfigOptions(config);
-
-        config.WipeConfig();
     }
 }

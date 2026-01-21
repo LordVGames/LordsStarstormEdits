@@ -9,7 +9,7 @@ using MonoDetour.HookGen;
 using MonoMod.Cil;
 using RoR2.Orbs;
 using System.Runtime.CompilerServices;
-namespace LordsStarstormEdits.SS2Edits.Items;
+namespace StarstormSquared.SS2Edits.Items;
 
 [MonoDetourTargets(typeof(SS2.Items.ArmedBackpack.Behavior))]
 internal static class ArmedBackpack

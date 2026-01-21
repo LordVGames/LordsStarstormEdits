@@ -11,7 +11,7 @@ using MonoDetour.HookGen;
 using MonoMod.Cil;
 using RoR2;
 using R2API;
-namespace LordsStarstormEdits.SS2Edits.EtherealStuff;
+namespace StarstormSquared.SS2Edits.Elites.Ultra;
 
 
 [MonoDetourTargets(typeof(AffixUltra), GenerateControlFlowVariants = true)]
@@ -20,7 +20,7 @@ internal static class UltraWardBuffTweak
     [MonoDetourHookInitialize]
     internal static void Setup()
     {
-        if (!ConfigOptions.Ethereal.TweakUltraWardBuff.Value || !SS2Config.enableBeta.value)
+        if (!ConfigOptions.Elites.Ultra.TweakUltraWardBuff.Value || !SS2Config.enableBeta.value)
         {
             return;
         }
@@ -41,7 +41,7 @@ internal static class UltraWardBuffTweak
             if (!body.HasBuff(SS2Content.Buffs.bdUltra))
             {
                 // not 100% sure about keeping this but ehhhhh it makes things more interesting
-                if (ConfigOptions.Ethereal.AddHealingToUltraWardBuff.Value)
+                if (ConfigOptions.Elites.Ultra.AddHealingToUltraWardBuff.Value)
                 {
                     args.baseRegenAdd += body.maxHealth *= 0.025f;
                 }

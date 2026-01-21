@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using RoR2;
 
-namespace LordsStarstormEdits;
+namespace StarstormSquared;
 
 internal static class ModSoftDependencies
 {
@@ -21,7 +21,7 @@ internal static class ModSoftDependencies
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         internal static float GetEditedICBMDamageMult(CharacterBody victimBody)
         {
-            return LordsItemEdits.ItemEdits.PocketICBM.GetICBMDamageMult(victimBody);
+            return LordsItemEdits.ItemEdits.PocketICBMEdit.PocketICBM.GetICBMDamageMultForCharacterBody(victimBody);
         }
     }
 }

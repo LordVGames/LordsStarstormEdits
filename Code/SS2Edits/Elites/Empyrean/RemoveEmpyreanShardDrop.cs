@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-namespace LordsStarstormEdits.SS2Edits.Elites.Empyrean;
+namespace StarstormSquared.SS2Edits.Elites.Empyrean;
 
 
 [MonoDetourTargets(typeof(SS2.Components.Empyrean), GenerateControlFlowVariants = true)]
@@ -19,7 +19,7 @@ internal static class RemoveEmpyreanShardDrop
     [MonoDetourHookInitialize]
     internal static void Setup()
     {
-        if (!ConfigOptions.Elites.RemoveEmpyreanShardDrop.Value || !SS2Config.enableBeta.value)
+        if (!ConfigOptions.Elites.Empyrean.RemoveEmpyreanShardDrop.Value || !SS2Config.enableBeta.value)
         {
             return;
         }
@@ -36,8 +36,8 @@ internal static class RemoveEmpyreanShardDrop
             x => x.MatchLdarg(1) && w.SetCurrentTo(x),
             x => x.MatchCallvirt<Component>("get_gameObject"),
             x => x.MatchCallvirt<GameObject>("AddComponent")
-        ).ThrowIfFailure();
-        w.InsertBeforeCurrent(
+        ).ThrowIfFailure()
+        .InsertBeforeCurrent(
             w.Create(OpCodes.Br, skipShardDrop)
         );
 
@@ -45,7 +45,7 @@ internal static class RemoveEmpyreanShardDrop
             x => x.MatchLdarg(1) && w.SetCurrentTo(x),
             x => x.MatchLdloca(4),
             x => x.MatchCallvirt<Component>("TryGetComponent")
-        ).ThrowIfFailure();
-        w.MarkLabelToCurrent(skipShardDrop);
+        ).ThrowIfFailure()
+        .MarkLabelToCurrent(skipShardDrop);
     }
 }

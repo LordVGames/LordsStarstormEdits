@@ -1,5 +1,5 @@
 using BepInEx.Logging;
-namespace LordsStarstormEdits;
+namespace StarstormSquared;
 
 
 internal static class Log

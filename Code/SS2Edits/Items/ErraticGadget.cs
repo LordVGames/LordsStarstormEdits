@@ -11,7 +11,7 @@ using RoR2.Orbs;
 using SS2;
 using R2API;
 [assembly: HG.Reflection.SearchableAttribute.OptIn]
-namespace LordsStarstormEdits.SS2Edits.Items;
+namespace StarstormSquared.SS2Edits.Items;
 
 
 [MonoDetourTargets(typeof(SS2.Items.ErraticGadget), GenerateControlFlowVariants = true)]
@@ -50,12 +50,12 @@ internal static class ErraticGadget
             case ConfigOptions.ItemEdits.ErraticGadgetEditType.None:
                 return;
             case ConfigOptions.ItemEdits.ErraticGadgetEditType.DamageMultAndOnHitProc:
-                SS2Content.Items.ErraticGadget.pickupToken = "LSE_ITEM_ERRATICGADGET_EDIT1_PICKUP";
-                SS2Content.Items.ErraticGadget.descriptionToken = "LSE_ITEM_ERRATICGADGET_EDIT1_DESC";
+                SS2Content.Items.ErraticGadget.pickupToken = "SS22_ITEM_ERRATICGADGET_EDIT1_PICKUP";
+                SS2Content.Items.ErraticGadget.descriptionToken = "SS22_ITEM_ERRATICGADGET_EDIT1_DESC";
                 break;
             case ConfigOptions.ItemEdits.ErraticGadgetEditType.OnlyDamageMult:
-                SS2Content.Items.ErraticGadget.pickupToken = "LSE_ITEM_ERRATICGADGET_EDIT2_PICKUP";
-                SS2Content.Items.ErraticGadget.descriptionToken = "LSE_ITEM_ERRATICGADGET_EDIT2_DESC";
+                SS2Content.Items.ErraticGadget.pickupToken = "SS22_ITEM_ERRATICGADGET_EDIT2_PICKUP";
+                SS2Content.Items.ErraticGadget.descriptionToken = "SS22_ITEM_ERRATICGADGET_EDIT2_DESC";
                 break;
         }
     }
@@ -72,8 +72,8 @@ internal static class ErraticGadget
         w.MatchRelaxed(
             x => x.MatchLdcI4(0) && w.SetCurrentTo(x),
             x => x.MatchStloc(0)
-        ).ThrowIfFailure();
-        w.InsertBeforeCurrentStealLabels(
+        ).ThrowIfFailure()
+        .InsertBeforeCurrentStealLabels(
             w.Create(OpCodes.Br, skipDoublingProc)
         );
 
@@ -88,10 +88,10 @@ internal static class ErraticGadget
             x => x.MatchCallvirt(out _) && w.SetCurrentTo(x),
             x => x.MatchLdarg(1),
             x => x.MatchLdarg(2)
-        ).ThrowIfFailure();
-        w.InsertAfterCurrent(w.Create(OpCodes.Ldarg_2));
-        w.MarkLabelToCurrent(skipDoublingProc);
-        w.InsertAfterCurrent(
+        ).ThrowIfFailure()
+        .InsertAfterCurrent(w.Create(OpCodes.Ldarg_2))
+        .MarkLabelToCurrent(skipDoublingProc)
+        .InsertAfterCurrent(
             w.CreateCall(JustDealMoreDamage)
         );
     }

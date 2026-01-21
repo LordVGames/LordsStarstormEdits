@@ -10,7 +10,7 @@ using SS2.Equipments;
 using System;
 using System.Collections.Generic;
 using System.Text;
-namespace LordsStarstormEdits.SS2Edits.Events;
+namespace StarstormSquared.SS2Edits.Elites.SuperElites;
 
 internal static class AddSuperEliteSubtitles
 {

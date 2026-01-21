@@ -10,7 +10,7 @@ using SS2.Components;
 using System;
 using System.Collections.Generic;
 using System.Text;
-namespace LordsStarstormEdits.SS2Edits.Survivors.Chirr;
+namespace StarstormSquared.SS2Edits.Survivors.Chirr;
 
 
 [MonoDetourTargets(typeof(ChirrFriendTracker), GenerateControlFlowVariants = true)]

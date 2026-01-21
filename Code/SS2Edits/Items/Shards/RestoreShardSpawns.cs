@@ -14,7 +14,7 @@ using UnityEngine.Networking;
 using RoR2;
 using MonoMod.RuntimeDetour;
 using Newtonsoft.Json.Utilities;
-namespace LordsStarstormEdits.SS2Edits.Items.Shards;
+namespace StarstormSquared.SS2Edits.Items.Shards;
 
 
 internal static class RestoreShardSpawns
@@ -146,47 +146,4 @@ internal static class RestoreShardSpawns
             }
         }
     }*/
-
-
-
-    [MonoDetourTargets(typeof(EliteEventMissionController))]
-    internal static class RestoreSuperEliteShardDrops
-    {
-        [MonoDetourHookInitialize]
-        internal static void Setup()
-        {
-            if (!ConfigOptions.Shards.RestoreSuperEliteShardDrops.Value)
-            {
-                return;
-            }
-
-            Mdh.SS2.EliteEventMissionController.OnBossKilledServer.OnKilledServer.ILHook(SkipBadDropReplacement);
-        }
-
-        private static void SkipBadDropReplacement(ILManipulationInfo info)
-        {
-            ILWeaver w = new(info);
-            ILLabel skipBadLine = w.DefineLabel();
-
-
-            w.MatchRelaxed(
-                x => x.MatchLdsfld("SS2.SS2Content/Items", "ShardStorm") && w.SetCurrentTo(x),
-                x => x.MatchCallvirt(out _),
-                x => x.MatchCall(out _),
-                x => x.MatchStloc(3)
-            ).ThrowIfFailure();
-            w.InsertBeforeCurrent(
-                w.Create(OpCodes.Br, skipBadLine)
-            );
-
-
-            w.MatchRelaxed(
-                x => x.MatchLdsfld("SS2.SS2Content/Items", "ShardStorm"),
-                x => x.MatchCallvirt(out _),
-                x => x.MatchCall(out _),
-                x => x.MatchStloc(3) && w.SetCurrentTo(x)
-            ).ThrowIfFailure();
-            w.MarkLabelToCurrentNext(skipBadLine);
-        }
-    }
 }

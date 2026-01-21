@@ -11,10 +11,10 @@ using MonoDetour.DetourTypes;
 using MonoDetour.HookGen;
 using MonoMod.Cil;
 using SS2.Items;
-namespace LordsStarstormEdits.SS2Edits.EtherealStuff;
+namespace StarstormSquared.SS2Edits.Elites.Ultra;
 
 
-[MonoDetourTargets(typeof(AffixUltra))]
+[MonoDetourTargets(typeof(AffixUltra), GenerateControlFlowVariants = true)]
 internal static class UltraWardTextureFix
 {
     private static Vector2 _cloud1TexScale = new(0.1f, 0.08f);
@@ -39,8 +39,8 @@ internal static class UltraWardTextureFix
 
         w.MatchRelaxed(
             x => x.MatchStsfld<AffixUltra>("_wardPrefab") && w.SetCurrentTo(x)
-        ).ThrowIfFailure();
-        w.InsertBeforeCurrent(
+        ).ThrowIfFailure()
+        .InsertBeforeCurrent(
             w.CreateDelegateCall((GameObject ward) =>
             {
                 Transform indicator = ward.transform.GetChild(0).GetChild(0);

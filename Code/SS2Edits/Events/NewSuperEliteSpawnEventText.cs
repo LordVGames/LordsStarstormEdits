@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static MSU.GameplayEventTextController;
-namespace LordsStarstormEdits.SS2Edits.Events;
+namespace StarstormSquared.SS2Edits.Events;
 
 
 [MonoDetourTargets(typeof(EliteEventMissionController))]
@@ -36,15 +36,15 @@ internal static class NewSuperEliteSpawnEventText
         w.MatchRelaxed(
             x => x.MatchLdloc(2),
             x => x.MatchStloc(1) && w.SetCurrentTo(x)
-        ).ThrowIfFailure();
-        w.InsertAfterCurrent(
+        ).ThrowIfFailure()
+        .InsertAfterCurrent(
             w.Create(OpCodes.Ldloc_1),
             w.Create(OpCodes.Stloc_1)
-        );
-        w.InsertBeforeCurrent(
+        )
+        .InsertBeforeCurrent(
             w.CreateDelegateCall((EventTextRequest eventTextRequest) =>
             {
-                eventTextRequest.eventToken = "LSE_SUPER_ELITE_SPAWN";
+                eventTextRequest.eventToken = "SS22_SUPER_ELITE_SPAWN";
                 return eventTextRequest;
             })
         );

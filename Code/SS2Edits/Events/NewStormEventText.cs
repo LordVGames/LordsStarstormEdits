@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-namespace LordsStarstormEdits.SS2Edits.Events;
+namespace StarstormSquared.SS2Edits.Events;
 
 
 [MonoDetourTargets(typeof(EntityStates.Events.Storm))]
@@ -38,8 +38,8 @@ internal static class NewStormEventText
         w.MatchRelaxed(
             x => x.MatchLdloc(1),
             x => x.MatchStloc(2) && w.SetCurrentTo(x)
-        ).ThrowIfFailure();
-        w.InsertAfterCurrent(
+        ).ThrowIfFailure()
+        .InsertAfterCurrent(
             w.Create(OpCodes.Ldarg_0),
             w.Create(OpCodes.Ldloc_2),
             w.CreateCall(GetCorrectStormTextToken),
@@ -48,26 +48,14 @@ internal static class NewStormEventText
     }
     private static GameplayEventTextController.EventTextRequest GetCorrectStormTextToken(EntityStates.Events.Storm storm, GameplayEventTextController.EventTextRequest eventTextRequest)
     {
-        string eventTextToken;
-        switch (storm.stormLevel)
+        eventTextRequest.eventToken = storm.stormLevel switch
         {
-            case 1:
-                eventTextToken = "SS2_EVENT_THUNDERSTORM_START";
-                break;
-            case 2:
-                eventTextToken = "LSE_STORM_LEVEL_2";
-                break;
-            case 3:
-                eventTextToken = "LSE_STORM_LEVEL_3";
-                break;
-            case 4:
-                eventTextToken = "LSE_STORM_LEVEL_4";
-                break;
-            default:
-                eventTextToken = Language.GetStringFormatted("LSE_STORM_LEVEL_OTHER", storm.stormLevel);
-                break;
-        }
-        eventTextRequest.eventToken = eventTextToken;
+            1 => "SS2_EVENT_THUNDERSTORM_START",
+            2 => "SS22_STORM_LEVEL_2",
+            3 => "SS22_STORM_LEVEL_3",
+            4 => "SS22_STORM_LEVEL_4",
+            _ => Language.GetStringFormatted("SS22_STORM_LEVEL_OTHER", storm.stormLevel),
+        };
         return eventTextRequest;
     }
 

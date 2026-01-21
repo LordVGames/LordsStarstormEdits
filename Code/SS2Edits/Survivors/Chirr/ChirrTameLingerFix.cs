@@ -11,7 +11,7 @@ using SS2.Items;
 using System;
 using System.Collections.Generic;
 using System.Text;
-namespace LordsStarstormEdits.SS2Edits.Survivors.Chirr;
+namespace StarstormSquared.SS2Edits.Survivors.Chirr;
 
 
 [MonoDetourTargets(typeof(ChirrFriendOrb.ConvertBehavior))]
@@ -33,19 +33,19 @@ internal static class ChirrTameLingerFixAgain
             x => x.MatchLdfld<DamageReport>("victimBody"),
             x => x.MatchCallvirt<CharacterBody>("get_isPlayerControlled"),
             x => x.MatchBrtrue(out returnLabel) && w.SetCurrentTo(x)
-        ).ThrowIfFailure();
-        w.InsertAfterCurrent(
+        ).ThrowIfFailure()
+        .InsertAfterCurrent(
             w.Create(OpCodes.Ldarg_1)
-        );
-        w.InsertAfterCurrent(
+        )
+        .InsertAfterCurrent(
             w.CreateDelegateCall(
                 (DamageReport damageReport) =>
                 {
                     return damageReport.victimBody != null && damageReport.victimBody.HasBuff(SS2Content.Buffs.BuffChirrConvert);
                 }
             )
-        );
-        w.InsertAfterCurrent(
+        )
+        .InsertAfterCurrent(
             w.Create(OpCodes.Brfalse, returnLabel)
         );
     }

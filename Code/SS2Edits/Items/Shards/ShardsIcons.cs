@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 [assembly: HG.Reflection.SearchableAttribute.OptIn]
-namespace LordsStarstormEdits.SS2Edits.Items.Shards;
+namespace StarstormSquared.SS2Edits.Items.Shards;
 
 
 internal static class ShardsIcons

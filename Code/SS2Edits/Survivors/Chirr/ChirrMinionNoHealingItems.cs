@@ -8,7 +8,7 @@ using MonoDetour.DetourTypes;
 using MonoDetour.HookGen;
 using MonoMod.Cil;
 using RoR2;
-namespace LordsStarstormEdits.SS2Edits.Survivors.Chirr;
+namespace StarstormSquared.SS2Edits.Survivors.Chirr;
 
 
 [MonoDetourTargets(typeof(SS2.Components.ChirrFriendController))]
@@ -35,8 +35,8 @@ internal static class ChirrMinionNoHealingItems
             x => x.MatchLdcI4(20),
             x => x.MatchCallvirt<ItemDef>("DoesNotContainTag"),
             x => x.MatchBrfalse(out endIfFalse)
-        ).ThrowIfFailure();
-        w.InsertBeforeCurrent(
+        ).ThrowIfFailure()
+        .InsertBeforeCurrent(
             w.Create(OpCodes.Ldloc_0),
             w.Create(OpCodes.Ldc_I4_2), // itemtag 2 is healing
             w.Create(OpCodes.Callvirt, typeof(ItemDef).GetMethod("DoesNotContainTag")),

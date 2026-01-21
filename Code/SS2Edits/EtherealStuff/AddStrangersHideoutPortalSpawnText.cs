@@ -9,12 +9,12 @@ using SS2;
 using System;
 using System.Collections.Generic;
 using System.Text;
-namespace LordsStarstormEdits.SS2Edits.EtherealStuff;
+namespace StarstormSquared.SS2Edits.EtherealStuff;
 
 
 // the token for this exists in SS2 already, it's just not used for some reason
-[MonoDetourTargets(typeof(SS2.TeleporterUpgradeController))]
-internal static class AddZanzanPortalSpawnText
+[MonoDetourTargets(typeof(TeleporterUpgradeController))]
+internal static class AddStrangersHideoutPortalSpawnText
 {
     [MonoDetourHookInitialize]
     internal static void Setup()

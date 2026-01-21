@@ -13,7 +13,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using RoR2;
 using RoR2.Skills;
-namespace LordsStarstormEdits.SS2Edits.Survivors.Knight;
+namespace StarstormSquared.SS2Edits.Survivors.Knight;
 
 
 [MonoDetourTargets(typeof(KnightPassiveController), GenerateControlFlowVariants = true)]

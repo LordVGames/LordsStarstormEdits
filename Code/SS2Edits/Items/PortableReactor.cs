@@ -11,7 +11,7 @@ using RoR2.Orbs;
 using System.Runtime.CompilerServices;
 using R2API;
 using SS2;
-namespace LordsStarstormEdits.SS2Edits.Items;
+namespace StarstormSquared.SS2Edits.Items;
 
 
 [MonoDetourTargets(typeof(SS2.Items.PortableReactor))]
@@ -47,8 +47,8 @@ internal static class PortableReactor
             x => x.MatchLdarg(1) && w.SetInstructionTo(ref startOfBadLine, x),
             x => x.MatchLdcI4(1),
             x => x.MatchStfld<DamageInfo>("rejected") && w.SetInstructionTo(ref endOfBadLine, x)
-        );
-        w.InsertBranchOver(startOfBadLine, endOfBadLine);
+        ).ThrowIfFailure()
+        .InsertBranchOver(startOfBadLine, endOfBadLine);
     }
 
     [SystemInitializer(dependencies: typeof(ItemCatalog))]
@@ -59,7 +59,7 @@ internal static class PortableReactor
             return;
         }
         
-        SS2Content.Items.PortableReactor.pickupToken = "LSE_ITEM_PORTABLEREACTOR_EDIT_PICKUP";
-        SS2Content.Items.PortableReactor.descriptionToken = "LSE_ITEM_PORTABLEREACTOR_EDIT_DESC";
+        SS2Content.Items.PortableReactor.pickupToken = "SS22_ITEM_PORTABLEREACTOR_EDIT_PICKUP";
+        SS2Content.Items.PortableReactor.descriptionToken = "SS22_ITEM_PORTABLEREACTOR_EDIT_DESC";
     }
 }

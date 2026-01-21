@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-namespace LordsStarstormEdits.SS2Edits.EtherealStuff;
+namespace StarstormSquared.SS2Edits.EtherealStuff;
 
 
 [MonoDetourTargets(typeof(TradeController), GenerateControlFlowVariants = true)]

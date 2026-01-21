@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using RoR2;
 using HarmonyLib;
-namespace LordsStarstormEdits.SS2Edits.Events;
+namespace StarstormSquared.SS2Edits.Events;
 
 [MonoDetourTargets(typeof(EntityStates.Events.Storm))]
 internal static class FixStormTPEffectsNotGoingAway
@@ -32,11 +32,11 @@ internal static class FixStormTPEffectsNotGoingAway
             x => x.MatchLdfld<EntityStates.EntityState>("outer"),
             x => x.MatchNewobj(out _),
             x => x.MatchCallvirt<EntityStateMachine>("SetNextState") && w.SetCurrentTo(x)
-        ).ThrowIfFailure();
-        w.InsertAfterCurrent(
+        ).ThrowIfFailure()
+        .InsertAfterCurrent(
             w.Create(OpCodes.Ldsfld, AccessTools.DeclaredField(typeof(TeleporterUpgradeController), nameof(TeleporterUpgradeController.instance)))
-        );
-        w.InsertAfterCurrent(
+        )
+        .InsertAfterCurrent(
             w.CreateDelegateCall(
                 (TeleporterUpgradeController teleporterUpgradeController) =>
                 {

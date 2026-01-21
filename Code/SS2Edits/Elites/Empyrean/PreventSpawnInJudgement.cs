@@ -12,15 +12,16 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine.SceneManagement;
 using RoR2;
-namespace LordsStarstormEdits.SS2Edits.Elites.Empyrean;
+namespace StarstormSquared.SS2Edits.Elites.Empyrean;
 
 
+[MonoDetourTargets(typeof(SS2.Components.Empyrean))]
 internal static class PreventSpawnInJudgement
 {
     [MonoDetourHookInitialize]
     internal static void Setup()
     {
-        if (ConfigOptions.Elites.AllowEmpyreansInJudgement.Value)
+        if (ConfigOptions.Elites.Empyrean.AllowEmpyreansInJudgement.Value)
         {
             return;
         }

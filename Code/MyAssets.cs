@@ -13,9 +13,9 @@ internal static class MyAssets
         ShardIcons.Init();
         SurvivorIcons.Init();
         Initialized = true;
-        if (!SS2Edits.Survivors.SurvivorIcons.SetIcons)
+        if (!Changes.Survivors.SurvivorIcons.SetIcons)
         {
-            SS2Edits.Survivors.SurvivorIcons.ChangeSurvivorIcons();
+            Changes.Survivors.SurvivorIcons.ChangeSurvivorIcons();
         }
     }
 

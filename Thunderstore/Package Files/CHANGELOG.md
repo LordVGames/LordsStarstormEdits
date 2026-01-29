@@ -1,3 +1,15 @@
+# 1.4.0
+
+- Made shard-tier items able to be picked up while having substandard duplicator by making them world-unique
+- Fixed all water + a ramp in slate mines having a pink texture (others will be fixed eventually)
+- Gave elite event progress objective new text
+- Allowed all enemies to become ethereal/ultra (but still not empyrean)
+- Disallowed jellyfish and acid larva from becoming any lategame elite
+- Added console command to manually start a specified elite event
+- Fixed ethereal sapling spawn place config being the opposite of what was set
+- Fixed item change configs causing the game to not load if the would-be changed item is disabled
+- Fixed toxic elite toggle being able to enable toxic elites despite beta content being disabled
+
 # 1.3.1
 
 - Fixed empyrean leveling config breaking empyrean scaling, even with the default setting

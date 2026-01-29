@@ -139,6 +139,8 @@
     "SS22_ITEM_ERRATICGADGET_EDIT2_DESC": "Your <style=cIsDamage>lightning damage</style> is multiplied by <style=cIsDamage>3x</style> <style=cStack>(+1.5x per stack)</style>. <style=cIsVoid>Void lightning</style> is <style=cDeath>not affected</style>.",
 
     "SS22_ITEM_PORTABLEREACTOR_EDIT_PICKUP": "Gain a large amount of armor and speed for some time after entering a stage.",
-    "SS22_ITEM_PORTABLEREACTOR_EDIT_DESC": "Gain <style=cIsUtility>100 armor</style> and <style=cIsUtility>+100% movement speed</style> for the first <style=cIsUtility>80s</style> <style=cStack>(+40s per stack)</style> of a stage."
+    "SS22_ITEM_PORTABLEREACTOR_EDIT_DESC": "Gain <style=cIsUtility>100 armor</style> and <style=cIsUtility>+100% movement speed</style> for the first <style=cIsUtility>80s</style> <style=cStack>(+40s per stack)</style> of a stage.",
+
+    "SS22_ELITE_EVENT_OBJECTIVE": "Excess Elite Energy: {0}%",
   }
 }

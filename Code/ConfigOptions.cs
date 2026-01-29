@@ -140,6 +140,7 @@ public static class ConfigOptions
             }
         }
 
+
         public static class Toxic
         {
             private const string _sectionName = "Toxic Elites";
@@ -158,8 +159,30 @@ public static class ConfigOptions
         }
 
 
+        private const string _sectionName = "Lategame Elites Overall";
+        public static ConfigEntry<bool> DisallowSelfDamagingEnemies;
+        public static ConfigEntry<bool> RemoveEtherealAndUltraRestriction;
+        private static void BindConfigOptions(ConfigFile config)
+        {
+            DisallowSelfDamagingEnemies = config.BindOption(
+                _sectionName,
+                "Disallow self-damaging enemies",
+                "Prevents self damaging enemies (namely jellyfish and acid larva) from becoming empyrean, ethereal, or ultra.",
+                true
+            );
+            RemoveEtherealAndUltraRestriction = config.BindOption(
+                _sectionName,
+                "Remove restriction on ethereal and ultra spawns",
+                "Lets any naturally spawning enemy become ethereal or ultra, even ones that can't become elites normally.",
+                true,
+                Extensions.ConfigFlags.RestartRequired
+            );
+        }
+
+
         internal static void BindAllConfigOptions(ConfigFile config)
         {
+            BindConfigOptions(config);
             Empyrean.BindConfigOptions(config);
             Ultra.BindConfigOptions(config);
             Toxic.BindConfigOptions(config);
@@ -170,7 +193,7 @@ public static class ConfigOptions
     {
         public static ConfigEntry<bool> ImplementZanzanPortalAppearText;
         public static ConfigEntry<bool> AddCraftingChefToZanzanStage;
-        public static ConfigEntry<bool> ChangeReplaceNewtWithEthereal;
+        public static ConfigEntry<bool> SpawnSaplingInSpecialSpots;
 
         internal static void BindConfigOptions(ConfigFile config)
         {
@@ -187,7 +210,7 @@ public static class ConfigOptions
                 "It is put on top of the roof that Zanzan the faded sits under.",
                 true
             );
-            ChangeReplaceNewtWithEthereal = config.BindOption(
+            SpawnSaplingInSpecialSpots = config.BindOption(
                 "Ethereal Related",
                 "Make ethereal sapling spawn in stage-specific spots instead of newt altar spots.",
                 "In stages without a pre-determined spot they will still spawn in a newt atltar spot.",
@@ -238,7 +261,7 @@ public static class ConfigOptions
         }
     }
 
-    public static class ItemEdits
+    public static class ItemChanges
     {
         public static ConfigEntry<bool> ArmedBackpack;
 
@@ -285,6 +308,6 @@ public static class ConfigOptions
         Elites.BindAllConfigOptions(config);
         Ethereal.BindConfigOptions(config);
         Shards.BindConfigOptions(config);
-        ItemEdits.BindConfigOptions(config);
+        ItemChanges.BindConfigOptions(config);
     }
 }

@@ -86,6 +86,7 @@ public static class ConfigOptions
         {
             private const string _sectionName = "Empyrean Elites";
             public static ConfigEntry<bool> RemoveEmpyreanShardDrop;
+            public static ConfigEntry<bool> AllowEmpyreanSpawn;
             public static ConfigEntry<bool> AllowEmpyreansInJudgement;
             public static ConfigEntry<int> CustomEmpyreanLevelUpInterval;
 
@@ -98,12 +99,17 @@ public static class ConfigOptions
                     true,
                     Extensions.ConfigFlags.RestartRequired
                 );
+                AllowEmpyreanSpawn = config.BindOption(
+                    _sectionName,
+                    "Allow spawning at all",
+                    "If they are broken or if you just don't want them to spawn then enable this.",
+                    false
+                );
                 AllowEmpyreansInJudgement = config.BindOption(
                     _sectionName,
                     "Allow spawning during EnemiesReturns Judgement",
                     "Empyreans can replace the normal aeonian spawns during the 1st Arraign phase, enable this if you still want that.",
-                    false,
-                    Extensions.ConfigFlags.RestartRequired
+                    false
                 );
                 CustomEmpyreanLevelUpInterval = config.BindOptionSlider(
                     _sectionName,
@@ -191,19 +197,11 @@ public static class ConfigOptions
 
     public static class Ethereal
     {
-        public static ConfigEntry<bool> ImplementZanzanPortalAppearText;
         public static ConfigEntry<bool> AddCraftingChefToZanzanStage;
         public static ConfigEntry<bool> SpawnSaplingInSpecialSpots;
 
         internal static void BindConfigOptions(ConfigFile config)
         {
-            ImplementZanzanPortalAppearText = config.BindOption(
-                "Ethereal Related",
-                "Implement unused Zanzan portal appearance text",
-                "There's already added non-placeholder text for when Zanzan's portal appears, this will implement it.",
-                true,
-                Extensions.ConfigFlags.RestartRequired
-            );
             AddCraftingChefToZanzanStage = config.BindOption(
                 "Ethereal Related",
                 "Add a crafting chef to the strangers hideout",

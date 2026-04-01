@@ -60,14 +60,14 @@ internal static class ArmedBackpack
         {
             return false;
         }
-        
+
 
         MicroMissileOrb missileOrb = new()
         {
-            origin = damageReport.attackerBody.aimOrigin,
+            origin = damageReport.victimBody.aimOrigin,
             damageValue = missileDamage,
             isCrit = damageReport.damageInfo.crit,
-            teamIndex = damageReport.attackerBody.teamComponent.teamIndex,
+            teamIndex = damageReport.victimBody.teamComponent.teamIndex,
             attacker = damageReport.victimBody.gameObject,
             procChainMask = damageReport.damageInfo.procChainMask,
             procCoefficient = 1f,

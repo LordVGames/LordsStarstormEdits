@@ -34,19 +34,8 @@ internal static class SlateMinesMain
         {
             if (gameObject.name.Contains("GAMEPLAY"))
             {
-                FixPinkTextures.FixWaterTexture(gameObject.transform);
-                FixPinkTextures.FixRampTexture(gameObject.transform);
                 RemoveCommandosForScale.DeleteCommandos(gameObject.transform);
                 continue;
-            }
-            if (gameObject.name.Contains("SHIPS"))
-            {
-                FixPinkTextures.FixFeathersTexture(gameObject.transform);
-                continue;
-            }
-            if (gameObject.name.Contains("LAMPS"))
-            {
-                FixPinkTextures.FixSolusLampTexture(gameObject.transform);
             }
         }
     }

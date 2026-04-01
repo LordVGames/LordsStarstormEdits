@@ -1,3 +1,9 @@
+# 1.4.1
+
+- Removed fixes added officially to SS2
+- Added config option to disable empyrean spawns (off by default, but should be turned on for now due to hp not working)
+- - Empyrean HP will be fixed later if the SS2 devs don't get to it first
+
 # 1.4.0
 
 - Made shard-tier items able to be picked up while having substandard duplicator by making them world-unique

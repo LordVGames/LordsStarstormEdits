@@ -19,7 +19,6 @@ public partial class Plugin : BaseUnityPlugin
         MyAssets.Init();
         LoadedAssets.LoadAssets();
         MonoDetourManager.InvokeHookInitializers(typeof(Plugin).Assembly);
-        ItemCatalog.availability.CallWhenAvailable(Changes.Items.RemoveBrokenItemAchievements.YouShallWorkAgain);
         RoR2Application.onLoad += Changes.Survivors.SurvivorIcons.ChangeSurvivorIcons;
     }
 }

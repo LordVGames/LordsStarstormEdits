@@ -15,24 +15,32 @@ using RoR2;
 namespace StarstormSquared.Changes.Elites.Empyrean;
 
 
-[MonoDetourTargets(typeof(SS2.Components.Empyrean))]
-internal static class PreventSpawnInJudgement
+[MonoDetourTargets]
+internal static class EmpyreanSpawnRestrictions
 {
     [MonoDetourHookInitialize]
     internal static void Setup()
     {
-        if (ConfigOptions.Elites.Empyrean.AllowEmpyreansInJudgement.Value)
-        {
-            return;
-        }
-
         Mdh.SS2.Components.Empyrean.IsAvailable.ControlFlowPrefix(DoJudgementStageCheck);
     }
 
+
     private static ReturnFlow DoJudgementStageCheck(SS2.Components.Empyrean self, ref bool returnValue)
     {
-        string sceneName = SceneManager.GetActiveScene().name;
-        returnValue = Run.instance.stageClearCount > 7 && sceneName != "enemiesreturns_outoftime";
+        if (!ConfigOptions.Elites.Empyrean.AllowEmpyreanSpawn.Value)
+        {
+            returnValue = false;
+        }
+        else if (!ConfigOptions.Elites.Empyrean.AllowEmpyreansInJudgement.Value)
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            returnValue = Run.instance.stageClearCount > 7 && sceneName != "enemiesreturns_outoftime";
+        }
+        else
+        {
+            return ReturnFlow.None;
+        }
+
 
         return ReturnFlow.SkipOriginal;
     }

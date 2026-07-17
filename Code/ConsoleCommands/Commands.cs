@@ -14,19 +14,17 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-[assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace StarstormSquared.ConsoleCommands;
 
 
-[MonoDetourTargets]
 internal static class Commands
 {
-    [ConCommand(commandName = "start_elite_event", flags = ConVarFlags.None, helpText = "Manually starts an elite event. Must be used on a stage with natural spawns or there will be an error!\nExisting types: blazing, overloading, glacial, mending")]
+    [ConCommand(commandName = "start_elite_event", flags = ConVarFlags.None, helpText = "Manually starts an elite event. Must be used on a stage with natural spawns or there will be problems!\nExisting types: blazing, overloading, glacial, mending")]
     private static void StartEliteEvent(ConCommandArgs args)
     {
         if (EventDirector.instance == null)
         {
-            Log.Error("SS2 event director is null, cannot use command at this time.");
+            Log.Error("Couldn't start elite event, SS2 event director is null!");
             return;
         }
         string eliteEventType = args.GetArgString(0);
@@ -82,6 +80,11 @@ internal static class Commands
         }
 
 
+        if (!SS2Config.enableBeta.value)
+        {
+            Log.Error("Couldn't start elite event, SS2 Beta content is not enabled!");
+            return;
+        }
         EventDirector.instance.StartEvent(chosenEliteEvent);
     }
 }

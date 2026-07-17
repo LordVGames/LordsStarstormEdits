@@ -1,4 +1,6 @@
-﻿using RoR2.ContentManagement;
+﻿using IL.RoR2.Skills;
+using RoR2;
+using RoR2.ContentManagement;
 using RoR2.ExpansionManagement;
 using System;
 using System.Collections.Generic;
@@ -12,18 +14,46 @@ internal static class LoadedAssets
 {
     private static readonly AssetReferenceT<ExpansionDef> _dlc1AssetReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC1_Common.DLC1_asset);
     internal static ExpansionDef Dlc1;
+
     private static readonly AssetReferenceT<ExpansionDef> _dlc3AssetReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3.DLC3_asset);
     internal static ExpansionDef Dlc3;
+
     private static readonly AssetReferenceT<GameObject> _craftingChefAssetReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_MealPrep.MealPrep_prefab);
     internal static GameObject CraftingChef;
+
     private static readonly AssetReferenceT<Material> _stage5TeleWaterMatReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Teleporters.matLunarTeleporterWater_mat);
     internal static Material Stage5TeleWaterMat;
+
     private static readonly AssetReferenceT<Material> _voidGauntletWaterMatReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC1_gauntlets.matVoidGauntletWater_mat);
     internal static Material VoidGauntletWaterMat;
+
     private static readonly AssetReferenceT<Material> _awuFeathersMatReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_RoboBallBoss.matSuperRoboBallBossBodyFeathers_mat);
     internal static Material AwuFeathersMat;
+
     private static readonly AssetReferenceT<Material> _smLampMatReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_RoboBallBuddy.texTrimSheetAlien1RustyGreenDiffuse_png);
     internal static Material SmLampMat;
+
+    private static readonly AssetReferenceT<RoR2.Skills.SkillDef> _toolbotDashReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Toolbot.ToolbotBodyToolbotDash_asset);
+    internal static Sprite ToolbotDashIcon;
+
+    private static readonly AssetReferenceT<RoR2.Skills.SkillDef> _toolbotSwapReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Toolbot.ToolbotBodySwap_asset);
+    internal static Sprite ToolbotSwapIcon;
+
+    private static readonly AssetReferenceT<RoR2.Skills.SkillDef> _healingDroneSkillDefReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_Base_Drones.Drone2BodyHealingBeam_asset);
+    internal static Sprite HealingDroneSkillIcon;
+
+    private static readonly AssetReferenceT<RoR2.Skills.SkillDef> _bombardmentDroneSkillDefReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC3_Drones.BombardmentDroneRemoteOpSkillDef_asset);
+    internal static Sprite BombardmentDroneSkillIcon;
+
+    private static readonly AssetReferenceT<Sprite> _voidFiendHealOrbIconReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC1_VoidSurvivor.texVoidSurvivorSkillIcons_png_texVoidSurvivorSkillIcons_3_);
+    internal static Sprite VoidFiendHealOrbIcon;
+
+    private static readonly AssetReferenceT<Sprite> _voidFiendCorruptSecondaryIconReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC1_VoidSurvivor.texVoidSurvivorSkillIcons_png_texVoidSurvivorSkillIcons_5_);
+    internal static Sprite VoidFiendCorruptSecondaryIcon;
+
+    private static readonly AssetReferenceT<Sprite> _railgunnerShotIconReference = new(RoR2BepInExPack.GameAssetPaths.Version_1_39_0.RoR2_DLC1_Railgunner.texRailgunnerSkillIcons_png_texRailgunnerSkillIcons_10_);
+    internal static Sprite RailgunnerShotIcon;
+
 
 
     internal static void LoadAssets()
@@ -56,5 +86,67 @@ internal static class LoadedAssets
         {
             SmLampMat = handle.Result;
         };
+        AssetAsyncReferenceManager<RoR2.Skills.SkillDef>.LoadAsset(_toolbotDashReference).Completed += (handle) =>
+        {
+            ToolbotDashIcon = handle.Result.icon;
+        };
+        AssetAsyncReferenceManager<RoR2.Skills.SkillDef>.LoadAsset(_toolbotSwapReference).Completed += (handle) =>
+        {
+            ToolbotSwapIcon = handle.Result.icon;
+        };
+        AssetAsyncReferenceManager<RoR2.Skills.SkillDef>.LoadAsset(_healingDroneSkillDefReference).Completed += (handle) =>
+        {
+            HealingDroneSkillIcon = handle.Result.icon;
+        };
+        AssetAsyncReferenceManager<RoR2.Skills.SkillDef>.LoadAsset(_bombardmentDroneSkillDefReference).Completed += (handle) =>
+        {
+            BombardmentDroneSkillIcon = handle.Result.icon;
+        };
+        AssetAsyncReferenceManager<Sprite>.LoadAsset(_voidFiendHealOrbIconReference).Completed += (handle) =>
+        {
+            VoidFiendHealOrbIcon = handle.Result;
+        };
+        AssetAsyncReferenceManager<Sprite>.LoadAsset(_voidFiendCorruptSecondaryIconReference).Completed += (handle) =>
+        {
+            VoidFiendCorruptSecondaryIcon = handle.Result;
+        };
+        AssetAsyncReferenceManager<Sprite>.LoadAsset(_railgunnerShotIconReference).Completed += (handle) =>
+        {
+            RailgunnerShotIcon = handle.Result;
+        };
+    }
+
+
+
+    internal static bool equipmentsLoaded = false;
+    internal static EquipmentIndex superFireEquipmentIndex;
+    internal static EquipmentIndex superIceEquipmentIndex;
+    internal static EquipmentIndex superEarthEquipmentIndex;
+    internal static EquipmentIndex superLightningEquipmentIndex;
+    internal static EquipmentDef superFireEquipmentDef;
+    internal static EquipmentDef superIceEquipmentDef;
+    internal static EquipmentDef superEarthEquipmentDef;
+    internal static EquipmentDef superLightningEquipmentDef;
+    internal static void LoadEquipments()
+    {
+        if (equipmentsLoaded)
+        {
+            return;
+        }
+
+
+        superFireEquipmentIndex = EquipmentCatalog.FindEquipmentIndex("AffixSuperFire");
+        superIceEquipmentIndex = EquipmentCatalog.FindEquipmentIndex("AffixSuperIce");
+        superEarthEquipmentIndex = EquipmentCatalog.FindEquipmentIndex("AffixSuperEarth");
+        superLightningEquipmentIndex = EquipmentCatalog.FindEquipmentIndex("AffixSuperLightning");
+
+
+        superFireEquipmentDef = EquipmentCatalog.GetEquipmentDef(superFireEquipmentIndex);
+        superIceEquipmentDef = EquipmentCatalog.GetEquipmentDef(superIceEquipmentIndex);
+        superEarthEquipmentDef = EquipmentCatalog.GetEquipmentDef(superEarthEquipmentIndex);
+        superLightningEquipmentDef = EquipmentCatalog.GetEquipmentDef(superLightningEquipmentIndex);
+
+
+        equipmentsLoaded = true;
     }
 }

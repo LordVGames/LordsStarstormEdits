@@ -25,6 +25,7 @@ internal static class UltraWardBuffTweak
             return;
         }
 
+
         Mdh.SS2.Items.AffixUltra.RecalculateStatsAPI_GetStatCoefficients.ControlFlowPrefix(DoTweakedUltraWardEffect);
     }
 

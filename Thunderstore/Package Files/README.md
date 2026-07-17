@@ -15,8 +15,8 @@ The majority of the changes here can be toggled on/off. Many of the changes that
 | Item  | New Description |
 | :-------------: | ------------- |
 | **Armed Backpack** <br> <img width="256" height="128" alt="texIconArmedBackpack" src="https://github.com/user-attachments/assets/bb458dc0-64c0-49b3-8fe8-0243db64e1e1" /> | **NO IN-GAME DESCRIPTION CHANGE** <br><br> I've made the missiles work more like plasma shrimp, where they have a much shorter time to fly to the targeted enemy and are much less of a burden on performance compared to normal missiles. Won't help as much on this compared to this change on ATG, but it could still help in some scenarios.
-| **Erratic Gadget** <br> *Edit 1* <br> <img width="256" height="128" alt="texIconPickupErraticGadget" src="https://github.com/user-attachments/assets/c237f79c-a223-46a1-82ee-33103ae6bb6d" /> | <img width="587" height="73" alt="image" src="https://github.com/user-attachments/assets/1e0b8170-c849-4853-b5d1-5a3f74edc095" /> <br><br> This doubles lighting damage instead of doubling lightning procs to help performance some. Also, void lightning (a.k.a polylute) was never affected by erratic gadget, so I've added it to the description so it's known.
-| **Erratic Gadget** <br> *Edit 2* <br> <img width="256" height="128" alt="texIconPickupErraticGadget" src="https://github.com/user-attachments/assets/c237f79c-a223-46a1-82ee-33103ae6bb6d" /> | <img width="590" height="59" alt="Risk_of_Rain_2_VLG9tdx8G6" src="https://github.com/user-attachments/assets/dacc95d4-d89d-4855-b200-809b0d92d636" /> <br><br> This is for when you also don't want the special on-hit procs from erratic gadget too, now being just a big lightning damage multiplier similar to Pocket I.C.B.M from another mod. Will help performance even more.
+| **Erratic Gadget** <br> *Change 1* <br> <img width="256" height="128" alt="texIconPickupErraticGadget" src="https://github.com/user-attachments/assets/c237f79c-a223-46a1-82ee-33103ae6bb6d" /> | <img width="587" height="73" alt="image" src="https://github.com/user-attachments/assets/1e0b8170-c849-4853-b5d1-5a3f74edc095" /> <br><br> This doubles lighting damage instead of doubling lightning procs to help performance some. Also, void lightning (a.k.a polylute) was never affected by erratic gadget, so I've added it to the description so it's known.
+| **Erratic Gadget** <br> *Change 2* <br> <img width="256" height="128" alt="texIconPickupErraticGadget" src="https://github.com/user-attachments/assets/c237f79c-a223-46a1-82ee-33103ae6bb6d" /> | <img width="590" height="59" alt="Risk_of_Rain_2_VLG9tdx8G6" src="https://github.com/user-attachments/assets/dacc95d4-d89d-4855-b200-809b0d92d636" /> <br><br> This is for when you also don't want the special on-hit procs from erratic gadget too, now being just a big lightning damage multiplier similar to Pocket I.C.B.M from another mod. Will help performance even more.
 | **Portable Reactor** <br> <br> <img width="256" height="128" alt="texIconPortableReactor" src="https://github.com/user-attachments/assets/55845c8a-f374-441e-ab12-d272f552c364" /> | <img width="604" height="57" alt="image" src="https://github.com/user-attachments/assets/2e53d4b0-ae5f-4fb2-95f7-7be89d7e0345" /> <br><br> I don't like how portable reactor is just a free win pass while active, and especially when it's stacked. I've changed the invulnerability to +100 armor, making it more of a constant oddly shaped opal effect while active so while you're still more tanky, the start of a stage isn't completely free. The speed gain can stay though.
 
 
@@ -28,6 +28,8 @@ The majority of the changes here can be toggled on/off. Many of the changes that
 
 - Minions don't receive your healing items
 - Enemies spawned from Relic of Termination are untamable
+- Fixed Chirr's tame lingering past the debuff's expiration
+- - Just a bandaid fix, idrk how to fully fix the problem
 
 ### Cyborg
 
@@ -37,13 +39,29 @@ The majority of the changes here can be toggled on/off. Many of the changes that
 
 ### Knight
 
-- Knight's skill descriptions have the numbers filled in
-- Knight has his (currently unused) passive buff ward
 - Given a new survivor icon
 - - It's not super good but it's better than the placeholder
 
+### DU-T
+
+- Fixed damage mode siphoning not giving charge
+- Made both siphon modes scale with attack speed
+- Gave skills placeholder icons instead of just white
+- Gave names and descriptions to most of DU-T's skills
+- - The text is based on SS1 DU-T's skill text
+- - DU-T's secondary is still non existant so just give yourself hooks of heresy until one is made
+
+### Duplicator Drones
+
+- Ignores temporary items
+- Picking up an item mid-dupe now barely adds any cooldown for the dupe drone
+- Fixed an NRE with the search method
+- - Basically less log clutter caused by them
+- - Dupe drones might work more reliably too?
+
 ### Empyrean Elites
 
+- Can be disabled
 - No longer drops shard(s) on death
 - Cannot spawn during EnemiesReturns' judgement sequence
 - The amount stages needed for empyreans to level up is now configurable
@@ -57,22 +75,21 @@ The majority of the changes here can be toggled on/off. Many of the changes that
 - Shards have actual icons along with new names/descriptions
 - - With how much I was getting the shards I did this to do this to make them feel more complete
 - Most shard drops have been restored
-- - The storm shard item isn't in the current SS2 build however
-- "New" message for when the Zanzan portal spawns
-- - The message exists in the mod, it's just not used
 - Zanzan's trade menu & trade teleporter menus have new text for their menu titles
-- Swapped around some of the text for the ethereal sapling to make it more apparent you need to hit it twice
+- Zanzan's trade menu now ignores temporary items
+- - If you have both normal and temporary versions of an item, you can still trade with your normal versions until you have just temporary ones left.
 - Item potential drops from the trade teleporter show for clients now
 - - Not really a fix as I just made it use the vanilla potential that still works for clients instead of the cloned one
 - Added option to make the ethereal sapling appear in some stage-specific spots
 - - Will still go to newt altar spots on unsupported maps
 - Added option to add a wandering chef to the stranger's hideout
-- All enemies can now become ethereal and/or ultra, even when they normally can't be an elite
+- - Requires you to have Alloyed Collective on
+- Added option to make all enemies able to become ethereal and/or ultra, even when they normally can't be an elite
+- - Off by default
 
 ### Ultra elites
 
 - Have their subtitle from SS1
-- The passive buff ward is now visible
 - The passive buff is a lil different
 - - The 20% more movement speed and 10% more damage is given also given to the ultra itself
 - - All allies except for the ultra get a tiny amount of % hp regen (under separate config option that is off by default)
@@ -85,19 +102,20 @@ The majority of the changes here can be toggled on/off. Many of the changes that
 - Super elite aspects have new(ish) names
 - - I've gotten one via rerolling a dropped aspect so it's possible to get these with other mods
 - Elite event objective has new text
+- Added new icons for super elites
+- - Credit to Gangrene for these!
+- Fixed super elites not having their proper super elite affix
+- Fixed super elites in multiplayer dropping blank shard-tier items that can't be picked up
 
 ### Other
 
 - The lunar gambler has text for its name and interaction prompts.
 - Jellyfish and acid larva cannot become any lategame elite (those being empyrean, ethereal, and ultra)
+- Adds back an unused yet working equipment from Alloyed Collective
+- - SS1 added back or re-implemented unused stuff so doing this fits this mod too imo
+- - Equipment still requires Alloyed Collective to be on
 
-### Fixes
-
-- A few items with broken unlock achievements have had their achievements removed (until the unlock achievements get fixed)
-- Fixed shard-tier items not letting you pick them up while you have substandard duplicator
-- - The way I did it may not be a perfect solution but it works
-- Fixed stormborn TP effects not going away when the storm ends
-- Fixed Chirr's tame lingering past the debuff's expiration
-- - Just a bandaid fix, idrk how to fully fix the problem
-- Fixed some pink textures in slate mines, including all the water
-- - Others will be fixed later
+### Other Fixes
+- Added option to fix slate mines water texture being pink
+- Added option to turn grass in stranger's hideout on/off
+- - The grass is currently broken and solid pink

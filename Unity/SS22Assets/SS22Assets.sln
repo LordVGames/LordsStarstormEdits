@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoR2.Editor", "RoR2.Editor.csproj", "{9ADA6510-EC4C-FD9F-3F7E-35F80C2E1121}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoR2.Editor.Scripts", "RoR2.Editor.Scripts.csproj", "{2A308BDB-0B98-06A5-3E89-217887903C45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoR2.Editor.ThunderKit", "RoR2.Editor.ThunderKit.csproj", "{105D224D-A85E-174D-EA51-F8348F7376E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetRipperShaderImporter", "AssetRipperShaderImporter.csproj", "{F408046B-BAED-EC35-DB83-F39CBBD6C482}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoR2.Editor.R2API", "RoR2.Editor.R2API.csproj", "{1F8E472B-6A21-7EC4-178C-8B137E721787}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9ADA6510-EC4C-FD9F-3F7E-35F80C2E1121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ADA6510-EC4C-FD9F-3F7E-35F80C2E1121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ADA6510-EC4C-FD9F-3F7E-35F80C2E1121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ADA6510-EC4C-FD9F-3F7E-35F80C2E1121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A308BDB-0B98-06A5-3E89-217887903C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A308BDB-0B98-06A5-3E89-217887903C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A308BDB-0B98-06A5-3E89-217887903C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A308BDB-0B98-06A5-3E89-217887903C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{105D224D-A85E-174D-EA51-F8348F7376E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{105D224D-A85E-174D-EA51-F8348F7376E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{105D224D-A85E-174D-EA51-F8348F7376E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{105D224D-A85E-174D-EA51-F8348F7376E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F408046B-BAED-EC35-DB83-F39CBBD6C482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F408046B-BAED-EC35-DB83-F39CBBD6C482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F408046B-BAED-EC35-DB83-F39CBBD6C482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F408046B-BAED-EC35-DB83-F39CBBD6C482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F8E472B-6A21-7EC4-178C-8B137E721787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8E472B-6A21-7EC4-178C-8B137E721787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8E472B-6A21-7EC4-178C-8B137E721787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8E472B-6A21-7EC4-178C-8B137E721787}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

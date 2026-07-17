@@ -29,10 +29,12 @@ internal static class SurvivorIcons
 
         if (SS2Content.Survivors.survivorKnight == null || SS2Content.Survivors.survivorKnight.bodyPrefab == null || !SS2Content.Survivors.survivorKnight.bodyPrefab.TryGetComponent<CharacterBody>(out CharacterBody knightCharacterBody) || knightCharacterBody == null)
         {
-            Log.Warning("KNIGHT SURVIVOR COULD NOT BE FOUND BUT IT PROBABLY WORKED ANYWAYS FOR SOME REASON");
-            return;
+            Log.Warning("KNIGHT SURVIVOR COULD NOT BE FOUND TO GIVE NEW ICON TO");
         }
-        knightCharacterBody.portraitIcon = MyAssets.SurvivorIcons.AssetBundle.LoadAsset<Texture>("texIconKnight");
+        else
+        {
+            knightCharacterBody.portraitIcon = MyAssets.SurvivorIcons.AssetBundle.LoadAsset<Texture>("texIconKnight");
+        }
 
 
 
@@ -40,10 +42,12 @@ internal static class SurvivorIcons
         SurvivorDef cyborgSurvivorDef = SurvivorCatalog.FindSurvivorDef("survivorCyborg2");
         if (cyborgSurvivorDef == null || cyborgSurvivorDef.bodyPrefab == null || !cyborgSurvivorDef.bodyPrefab.TryGetComponent<CharacterBody>(out CharacterBody cyborgCharacterBody) || cyborgCharacterBody == null)
         {
-            Log.Error("CYBORG SURVIVOR COULD NOT BE FOUND TO GIVE NEW ICON TO???");
-            return;
+            Log.Warning("CYBORG SURVIVOR COULD NOT BE FOUND TO GIVE NEW ICON TO");
         }
-        cyborgCharacterBody.portraitIcon = MyAssets.SurvivorIcons.AssetBundle.LoadAsset<Texture>("texIconCyborg");
+        else
+        {
+            cyborgCharacterBody.portraitIcon = MyAssets.SurvivorIcons.AssetBundle.LoadAsset<Texture>("texIconCyborg");
+        }
 
 
         SetIcons = true;

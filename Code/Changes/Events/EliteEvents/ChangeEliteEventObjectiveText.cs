@@ -4,7 +4,7 @@ using MonoDetour.DetourTypes;
 using MonoDetour.HookGen;
 using RoR2;
 using SS2;
-namespace StarstormSquared.Changes.Events;
+namespace StarstormSquared.Changes.Events.EliteEvents;
 
 
 [MonoDetourTargets]

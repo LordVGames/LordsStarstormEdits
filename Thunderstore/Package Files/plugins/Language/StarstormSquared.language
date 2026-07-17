@@ -41,9 +41,6 @@
     "SS2_EQUIP_AFFIXSUPEREARTH_SUBTITLE": "Harbinger of Petrichor V's Energy",
 
 
-    "SS2_KNIGHT_DESCRIPTION": "The Knight is a skilled expert in melee combat, dueling and parrying foes with precise timing and execution.\n\n<color=#CCD3E0>< ! > FULLY WORKS ONLY WHEN PLAYED BY THE HOST\n< ! > parry.",
-
-
     "SS2_CYBORG2_DESCRIPTION": "The Cyborg is a \n\n<color=#CCD3E0>< ! > FULLY WORKS ONLY WHEN PLAYED BY THE HOST",
 
     "SS2_CYBORG2_PRIMARY_CANNON_DESCRIPTION": "Fire a <style=cIsUtility>slowing</style> laser for <style=cIsDamage>320% damage</style>",
@@ -121,5 +118,22 @@
     "SS22_ITEM_PORTABLEREACTOR_EDIT_DESC": "Gain <style=cIsUtility>100 armor</style> and <style=cIsUtility>+100% movement speed</style> for the first <style=cIsUtility>80s</style> <style=cStack>(+40s per stack)</style> of a stage.",
 
     "SS22_ELITE_EVENT_OBJECTIVE": "Excess Elite Energy: {0}%",
+
+
+
+
+    "SS2_DUT_PRIMARY_NAME": "HARVEST",
+    "SS2_DUT_PRIMARY_DESC": "<style=cIsDamage>ABSORB HEALTH</style> FROM <style=cIsDamage>NEARBY ENEMIES</style> OR <style=cIsHealth>YOURSELF</style> TO <style=cIsDamage>CHARGE ENERGY</style>. RELEASE TO DISCHARGE ENERGY IN A <style=cIsDamage>LASER BLAST</style>.",
+
+    "SS2_DUT_UTILITY_NAME": "DRIFT",
+    "SS2_DUT_UTILITY_DESC": "<style=cIsUtility>DASH</style> A SHORT DISTANCE. <style=cHumanObjective>HOLD</style> TO ENGAGE TREADS INTO <style=cIsUtility>DRIFT MODE</style> FOR UP TO 2.5 SECONDS, MOVING WITH <style=cIsUtility>INCREASED SPEED</style>.",
+
+    "SS2_DUT_SPECIAL_NAME": "TOGGLE MODE",
+    "SS2_DUT_SPECIAL_DESC": "SWITCH BETWEEN <style=cIsHealth>SELF</style> AND <style=cIsDamage>ENEMY</style> HARVEST MODE.",
+
+
+
+
+    "SS2_BANDIT_TRANQ_GUN_DESC": "Fire a tranquilizer dart for <style=cIsDamage>300% damage</style>, <style=cIsUtility>slowing down</style> and eventually <style=cIsUtility>stunning</style> enemies. Enemies lose <style=cIsDamage>25 armor</style> while stunned by this skill. Can hold up 4 darts."
   }
 }

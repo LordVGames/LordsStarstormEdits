@@ -15,12 +15,8 @@ internal static class SlateMinesMain
     private static void Setup()
     {
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-        SceneDirector.onPostPopulateSceneServer += SceneDirector_onPostPopulateSceneServer;
     }
 
-    private static void SceneDirector_onPostPopulateSceneServer(SceneDirector obj)
-    {
-    }
 
     private static void SceneManager_sceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
@@ -34,6 +30,7 @@ internal static class SlateMinesMain
         {
             if (gameObject.name.Contains("GAMEPLAY"))
             {
+                FixPinkWater.FixWaterTexture(gameObject.transform);
                 RemoveCommandosForScale.DeleteCommandos(gameObject.transform);
                 continue;
             }

@@ -4,14 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-[assembly: HG.Reflection.SearchableAttribute.OptIn]
 namespace StarstormSquared.Changes.Items.Shards;
 
 
-internal static class ShardsIcons
+internal static class ShardIcons
 {
     [SystemInitializer(dependencies: typeof(ItemCatalog))]
-    internal static void ChangeIcons()
+    private static void ChangeIcons()
     {
         if (!SS2Config.enableBeta.value)
         {

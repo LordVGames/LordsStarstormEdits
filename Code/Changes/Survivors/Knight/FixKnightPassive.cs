@@ -1,4 +1,6 @@
-﻿using Mono.Cecil.Cil;
+﻿// TODO add the passive back myself eventually
+
+/*using Mono.Cecil.Cil;
 using MonoDetour;
 using MonoDetour.Cil;
 using MonoDetour.DetourTypes;
@@ -95,4 +97,4 @@ internal static class FixKnightPassive
         
         SS2Content.Buffs.bdKnightBuff.buffColor = SS2Content.Survivors.survivorKnight.primaryColor;
     }
-}
+}*/

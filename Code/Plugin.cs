@@ -1,6 +1,7 @@
 using BepInEx;
 using MonoDetour;
 using RoR2;
+[assembly: HG.Reflection.SearchableAttribute.OptIn]
 namespace StarstormSquared;
 
 
@@ -20,5 +21,7 @@ public partial class Plugin : BaseUnityPlugin
         LoadedAssets.LoadAssets();
         MonoDetourManager.InvokeHookInitializers(typeof(Plugin).Assembly);
         RoR2Application.onLoad += Changes.Survivors.SurvivorIcons.ChangeSurvivorIcons;
+        RoR2Application.onLoad += Changes.Survivors.DUT.GiveSkillIcons.GiveDUTSkillIcons;
+        RoR2Application.onLoad += Changes.Survivors.DUT.MakeDriftBuffNotHidden.EditDriftBuff;
     }
 }

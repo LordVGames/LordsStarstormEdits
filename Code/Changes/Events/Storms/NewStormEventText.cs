@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-namespace StarstormSquared.Changes.Events;
+namespace StarstormSquared.Changes.Events.Storms;
 
 
 [MonoDetourTargets(typeof(EntityStates.Events.Storm))]

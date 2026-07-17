@@ -38,7 +38,7 @@ internal static class AllowAndDisallowCertainEnemiesLategame
             x => x.MatchRet() && w.SetInstructionTo(ref endOfSkip, x) && w.SetCurrentTo(x)
         ).ThrowIfFailure();
         // removing intiial elite rules check because i want more enemies to be ethereal/ultra including lunar enemies
-        if (ConfigOptions.Elites.RemoveEtherealAndUltraRestriction.Value)
+        if (ConfigOptions.Elites.AllLateGameElites.RemoveEtherealAndUltraRestriction.Value)
         {
             w.InsertBranchOver(startOfSkip, endOfSkip);
         }
@@ -52,7 +52,7 @@ internal static class AllowAndDisallowCertainEnemiesLategame
                         body == RoR2Content.BodyPrefabs.JellyfishBody
                         || body == DLC1Content.BodyPrefabs.AcidLarvaBody
                     )
-                    && ConfigOptions.Elites.DisallowSelfDamagingEnemies.Value)
+                    && ConfigOptions.Elites.AllLateGameElites.DisallowSelfDamagingEnemies.Value)
                 {
                     return false;
                 }

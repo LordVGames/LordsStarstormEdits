@@ -25,6 +25,7 @@ internal static class AddUltraEliteSubtitle
             return;
         }
 
+
         Mdh.SS2.Items.AffixUltra.BodyBehavior.Start.Postfix(AddSS1Subtitle);
     }
 

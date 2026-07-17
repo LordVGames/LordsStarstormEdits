@@ -12,6 +12,12 @@ internal static class ConfigSaplingReplacingNewtAltars
     [MonoDetourHookInitialize]
     private static void Setup()
     {
+        if (!SS2Config.enableBeta.value)
+        {
+            return;
+        }
+
+
         Mdh.SS2.EtherealBehavior.SpawnShrine.Prefix(ChangeBasedOnConfig);
     }
 

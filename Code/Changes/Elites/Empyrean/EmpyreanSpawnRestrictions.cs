@@ -21,11 +21,11 @@ internal static class EmpyreanSpawnRestrictions
     [MonoDetourHookInitialize]
     internal static void Setup()
     {
-        Mdh.SS2.Components.Empyrean.IsAvailable.ControlFlowPrefix(DoJudgementStageCheck);
+        Mdh.SS2.Components.Empyrean.IsAvailable.ControlFlowPrefix(ActuallyAvailableOrNo);
     }
 
 
-    private static ReturnFlow DoJudgementStageCheck(SS2.Components.Empyrean self, ref bool returnValue)
+    private static ReturnFlow ActuallyAvailableOrNo(SS2.Components.Empyrean self, ref bool returnValue)
     {
         if (!ConfigOptions.Elites.Empyrean.AllowEmpyreanSpawn.Value)
         {

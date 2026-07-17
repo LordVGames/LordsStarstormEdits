@@ -1,3 +1,55 @@
+# 1.7.0
+
+- Removed a few fixes added to SS2 itself
+- Changed a few config option categories around, double check what you have set!
+- Fixed super elites not having their proper super elite affix
+- Fixed super elites in multiplayer dropping glitched shards that can't be picked up
+- Added new icons to super elites (made by Gangrene!)
+- Added a config options to prevent captain and/or robomando from hacking primal birthright chests
+- - By default: captain not allowed, robomando is allowed
+- Added a config option to send event messages to the chat instead of a big text pop-up (not just family events!)
+- - This is helpful for multiplayer clients as they currently can't see elite event messages
+- Added a config option to stop Zanzan's idle sounds
+- - On by default
+- `start_elite_event` command now won't run if you don't have the beta content enabled
+- Fixed error from a DU-T fix
+- Added an unused yet working equipment from DLC3 (ss1 added back unused stuff so this is fine imo)
+- Made dupe drones and the zanzan trade menu ignore temp items
+- Fixed NRE with dupe drone (clonedrone) search
+- Picking up an item mid-dupe now barely adds cooldown for the dupe drone
+
+# 1.6.0
+
+- Fixed "allow empyreans" config description being wrong and made it default to true
+- Added more description text for bandit's tranq gun
+- Made nemesis invaders much harder to knockback/launch
+- Changed a few category names for config options, so some options may have been reset
+
+# 1.5.2
+
+- Fixed fork damage causing DU-T to get 2x orbs per siphon
+- I stg I keep forgetting to check for beta
+
+# 1.5.1
+
+- Fixed having DU-T disabled causing this mod to prevent the game from loading
+- - This only happened if you had DU-T disabled, not if you had beta content in general turned off
+
+# 1.5.0
+
+- Fixed readme still mentioning removed fixes
+- Fixed empyrean disable config text being confusing
+- Removed survivor description text about knight only working for the host
+- - His slight rework fixed the banner ability for clients
+- Fixed HP being messed up while you have the empyrean affix
+- Added option to fix slate mines water
+- Fixed some things with W.I.P DU-T to make them more playable
+- - I am not done with DU-T yet though, but this makes his existing kit work better
+
+# 1.4.2
+
+- Fixed for latest SS2
+
 # 1.4.1
 
 - Removed fixes added officially to SS2

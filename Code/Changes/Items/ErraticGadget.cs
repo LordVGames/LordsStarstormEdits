@@ -10,7 +10,6 @@ using MonoMod.Cil;
 using RoR2.Orbs;
 using SS2;
 using R2API;
-[assembly: HG.Reflection.SearchableAttribute.OptIn]
 namespace StarstormSquared.Changes.Items;
 
 

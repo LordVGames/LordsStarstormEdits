@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static MSU.GameplayEventTextController;
-namespace StarstormSquared.Changes.Events;
+namespace StarstormSquared.Changes.Events.EliteEvents;
 
 
 [MonoDetourTargets(typeof(EliteEventMissionController), GenerateControlFlowVariants = true)]

@@ -23,8 +23,10 @@ internal static class ShardTradeDropFix
             return;
         }
 
+
         Mdh.SS2.TradeController.InitPrefabTEMP.ControlFlowPrefix(JustUseTheNormalPotential);
     }
+
 
     private static ReturnFlow JustUseTheNormalPotential()
     {
